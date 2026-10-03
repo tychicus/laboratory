@@ -1,0 +1,3 @@
+/* Silent signal interference is applied by Web Animations and cancels cleanly. */
+.signal-anomaly{will-change:filter,translate,text-shadow}
+@media(prefers-reduced-motion:reduce){.signal-anomaly{will-change:auto}}
