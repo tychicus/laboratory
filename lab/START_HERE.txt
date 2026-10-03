@@ -1,0 +1,4 @@
+VISUAL REVISION 3
+Extract this ZIP into a fresh folder, then open index.html. All images and scripts are included. Optional Google Fonts fall back to system fonts offline.
+Brighter microscope illumination; transparent clickable specimens; independently drifting background cells and platelets; labels OFF by default; responsive image proportions; nine small Science Hero poses.
+Navigation: ENTER THE LAB, choose a specimen, Return to the microscope. Topic pages also have previous/next navigation. Pause motion and Show labels are optional controls.
