@@ -11,3 +11,7 @@ These are two real micrographs and one inheritance diagram, not three microscope
 ## Added laboratory-panel image
 
 `hemoglobin-electrophoresis.png`: Harris, Neil S.; Boothe, Paul; Mbatia, Hanna; Winter, William E.; Marin, Maximo J. “Hemoglobin—A Review of Structure, Mechanisms and Analysis in the Clinical Diagnostic Laboratory.” 2026, Figure 11. Source: https://www.mdpi.com/2813-9038/3/2/15 . CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Downloaded 2026-10-03 from https://pub.mdpi-res.com/labmed/labmed-03-00015/article_deploy/html/images/labmed-03-00015-g011.png?1780229941 . Original file retained; CSS frames panel (b), the real alkaline gel photograph. Opening the image reveals the full figure with schematic (a), alkaline gel photograph (b), and acid gel photograph (c). It shows multiple samples; do not imply one patient's result or that alkaline S-region migration alone confirms HbS.
+
+## Comic illustration
+
+`scientist-dna-comic.png`: AI-generated narrative artwork using the built-in image generation tool, 2026-10-03. Prompt: A colorful comic-book blonde female scientist in a white lab coat and thick black glasses thoughtfully studying a large glowing DNA display in a futuristic laboratory; bold ink, halftone shading, cyan, magenta, gold; wide composition, no text. Decorative illustration, not microscopy or a precise molecular diagram.

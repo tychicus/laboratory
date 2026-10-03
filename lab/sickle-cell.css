@@ -9,3 +9,6 @@
 
 /* Small real-result images within the laboratory cards. */
 .sc-lab .sc-mini-figure{margin-top:20px;background:#0b2633;border:1px solid #8af5ef66;border-radius:6px}.sc-mini-figure>a{display:block}.sc-mini-figure>a>img{display:block;width:100%;height:180px;object-fit:contain;background:transparent}.sc-mini-figure figcaption{padding:10px 12px;background:#0b2633;font-size:17px;line-height:1.35}.sc-mini-figure figcaption small{margin-top:5px;font-size:11px}.sc-mini-figure .sc-electro-window{position:relative;aspect-ratio:946 / 460;overflow:hidden;background:white}.sc-mini-figure .sc-electro-window>img{position:absolute;top:0;left:0;width:100%;height:auto;max-height:none;transform:translateY(-35%)}
+
+/* Large centered comic illustration beneath the closing heading. */
+.sc-dna-art{width:min(100%,1100px);margin:26px auto 0!important;border:3px solid #8af5ef!important;box-shadow:7px 7px 0 #e954b33b}.sc-dna-art img{display:block;width:100%;height:auto}.sc-dna-art figcaption{font:14px/1.4 'Space Grotesk',sans-serif;color:#bcece7;padding:10px 16px}.sc-finale-title{margin:30px auto!important}
