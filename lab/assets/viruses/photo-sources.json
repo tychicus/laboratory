@@ -1,0 +1,80 @@
+[
+  {
+    "key": "coronavirus",
+    "name": "Coronavirus",
+    "title": "SARS-CoV-2",
+    "file": "coronavirus-em.jpg",
+    "method": "TEM · color added",
+    "caption": "Real SARS-CoV-2 particles seen by transmission electron microscopy. The warm-colored particles stand out against surrounding material; the colors were added by NIAID.",
+    "credit": "NIAID, Integrated Research Facility",
+    "license": "CC BY 2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Novel_Coronavirus_SARS-CoV-2_(49597020648).jpg",
+    "alt": "Color-enhanced electron micrograph of rounded SARS-CoV-2 particles, shown in orange and pink against a blue background."
+  },
+  {
+    "key": "influenza",
+    "name": "Influenza A",
+    "title": "Influenza A",
+    "file": "influenza-em.jpg",
+    "method": "Transmission electron microscopy",
+    "caption": "A group of real influenza A particles. Compare their rounded outlines and fine surface projections with the simplified illustration.",
+    "credit": "CDC / Dr. Erskine Palmer · PHIL 280",
+    "license": "Public domain",
+    "license_url": "https://wwwn.cdc.gov/phil/Details.aspx?pid=280",
+    "source": "https://commons.wikimedia.org/wiki/File:Influenza_A_-_late_passage.jpg",
+    "alt": "Grayscale transmission electron micrograph of many rounded influenza A particles with fine projections around their edges."
+  },
+  {
+    "key": "adenovirus",
+    "name": "Adenovirus",
+    "title": "Adenovirus",
+    "file": "adenovirus-em.jpg",
+    "method": "Transmission electron microscopy",
+    "caption": "Two real adenovirus particles. Their angular outlines hint at the faceted capsid; a micrograph does not reveal every feature as clearly as a drawing.",
+    "credit": "GrahamColm at English Wikipedia",
+    "license": "CC BY 3.0",
+    "license_url": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Adenovirus_4.jpg",
+    "alt": "Grayscale electron micrograph showing two adenovirus particles with roughly polygonal outlines."
+  },
+  {
+    "key": "rabies",
+    "name": "Rabies virus",
+    "title": "Rabies virus",
+    "file": "rabies-em.jpg",
+    "method": "Transmission electron microscopy",
+    "caption": "Rabies particles within infected tissue. Look for the small elongated, bullet-shaped profiles. The larger structures belong to the cell or its viral inclusions.",
+    "credit": "CDC / Dr. Fred Murphy · PHIL 1876",
+    "license": "Public domain",
+    "license_url": "https://wwwn.cdc.gov/phil/Details.aspx?pid=1876",
+    "source": "https://commons.wikimedia.org/wiki/File:Rabies_Virus_EM_PHIL_1876.JPG",
+    "alt": "Grayscale thin-section electron micrograph of infected tissue containing numerous small elongated rabies particles and larger cellular structures."
+  },
+  {
+    "key": "tmv",
+    "name": "Tobacco mosaic virus",
+    "title": "Tobacco mosaic virus",
+    "file": "tmv-em.png",
+    "method": "Negative-contrast electron microscopy",
+    "caption": "Real tobacco mosaic virus particles show long, straight rods. The white scale bar represents 100 nanometers. Dark staining helps make the particles visible.",
+    "credit": "International Committee on Taxonomy of Viruses",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:TMV_under_TEM.png",
+    "alt": "Grayscale electron micrograph of long, straight tobacco mosaic virus rods, with a white 100-nanometer scale bar."
+  },
+  {
+    "key": "phage",
+    "name": "T4 bacteriophage",
+    "title": "T4 bacteriophage",
+    "file": "phage-em.jpg",
+    "method": "Electron microscopy",
+    "caption": "A real T4 particle with a large head, a long tail, and fine fibers near its base. This photograph is naturally grainier than the teaching illustration.",
+    "credit": "7USSR7 · via Wikimedia Commons",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:T4_phage_EM.jpg",
+    "alt": "Black-and-white electron micrograph of a T4 bacteriophage showing its head, tail, and thin attachment fibers."
+  }
+]
