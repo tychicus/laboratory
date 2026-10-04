@@ -59,3 +59,6 @@
 .sc-impact-points strong{color:#ffc9cd}
 .sc-point-bullet{display:block;font:700 52px/.7 'Space Grotesk',sans-serif;color:#a5fff0;text-align:center;padding-top:2px}
 @media(max-width:850px){.sc-chain.sc-combined{grid-template-columns:1fr}.sc-panel-points>li{gap:14px}}
+
+/* User-supplied opening-slide illustration. */
+.sickle-story .sc-transformation-art{margin:24px 0 0;max-width:1050px;background:#061a29}.sc-transformation-art img{display:block;width:100%;height:auto;object-fit:contain}

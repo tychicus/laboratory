@@ -15,3 +15,7 @@ These are two real micrographs and one inheritance diagram, not three microscope
 ## Comic illustration
 
 `scientist-dna-comic.png`: AI-generated narrative artwork using the built-in image generation tool, 2026-10-03. Prompt: A colorful comic-book blonde female scientist in a white lab coat and thick black glasses thoughtfully studying a large glowing DNA display in a futuristic laboratory; bold ink, halftone shading, cyan, magenta, gold; wide composition, no text. Decorative illustration, not microscopy or a precise molecular diagram.
+
+## Opening-slide transformation illustration
+
+`red-cell-to-sickle-cell.png`: user-supplied illustration, added October 4, 2026. Original attachment preserved without cropping or alteration. Shows a round red cell, an arrow, and a sickle-shaped red cell; illustrative artwork, not microscopy. Placed directly below the hemoglobin definition on the opening slide.
