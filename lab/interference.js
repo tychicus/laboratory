@@ -10,6 +10,7 @@
     [{filter:'none',textShadow:'none'},{offset:.25,filter:'blur(.4px)',textShadow:'3px 0 #ff79cd, -2px 0 #7fffee'},{offset:.65,filter:'none',textShadow:'-1px 0 #ff79cd, 1px 0 #7fffee'},{filter:'none',textShadow:'none'}]
   ];
   function eligible(el) {
+    if (el.closest('.comic-glitch')) return false;
     if (el.closest('[hidden],[inert],'+interactive) || el.querySelector(interactive) || el.contains(document.activeElement) || el.matches(':hover') || el.closest('.welcome-layer') && document.body.classList.contains('welcome-dismissed')) return false;
     const box = el.getBoundingClientRect(), style = getComputedStyle(el);
     return box.width > 0 && box.height > 0 && box.top >= 0 && box.bottom <= innerHeight && box.right > 0 && box.left < innerWidth && style.visibility === 'visible' && Number(style.opacity) > .1;

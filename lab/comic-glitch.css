@@ -1,0 +1,85 @@
+/* Original rapid glitch frames, with one burst every 8.5 seconds.
+   Three distinct bursts share a 25.5-second loop; labels stay in sync. */
+.comic-glitch {
+  --glitch-angle: 0deg;
+  --glitch-fill: transparent;
+  position: relative;
+  isolation: isolate;
+  animation: comic-registration 25.5s steps(1, end) infinite;
+}
+.sc-comic.comic-glitch { --glitch-angle: -1deg; --glitch-fill: var(--yellow); }
+.sc-number.comic-glitch { --glitch-angle: -5deg; --glitch-fill: var(--yellow); }
+.comic-glitch-copy {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: inherit;
+  display: inherit;
+  place-items: inherit;
+  border: inherit;
+  border-color: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: var(--glitch-fill);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  animation: comic-tear-cyan 25.5s steps(1, end) infinite;
+}
+.comic-glitch-cyan { text-shadow: -3px 0 #00eeff, 2px 0 #127aff; }
+.comic-glitch-pink {
+  text-shadow: 3px 0 #ff168d, -2px 0 #ff4444;
+  animation-name: comic-tear-pink;
+}
+@keyframes comic-registration {
+  0%, 32.71216%, 65.85412%, 99.37882%, 100% { transform: rotate(var(--glitch-angle)); text-shadow: none; }
+  31.37255% { transform: translate(2px, -1px) rotate(var(--glitch-angle)); text-shadow: -2px 0 #00eeff, 2px 0 #ff168d; }
+  31.65961% { transform: translate(-4px, 1px) skewX(-3deg) rotate(var(--glitch-angle)); }
+  31.94667% { transform: translate(3px, 0) rotate(var(--glitch-angle)); }
+  32.32941% { transform: rotate(var(--glitch-angle)); text-shadow: -3px 0 #00eeff, 2px 0 #ff168d; }
+  64.89725% { transform: translate(-3px, 0) skewX(2deg) rotate(var(--glitch-angle)); }
+  65.28000% { transform: translate(4px, -1px) rotate(var(--glitch-angle)); }
+  98.03922% { transform: translate(2px, 0) rotate(var(--glitch-angle)); }
+  98.42196% { transform: translate(-4px, 1px) skewX(-4deg) rotate(var(--glitch-angle)); text-shadow: -4px 0 #00eeff, 4px 0 #ff168d; }
+  98.80471% { transform: translate(3px, -1px) rotate(var(--glitch-angle)); }
+}
+@keyframes comic-tear-cyan {
+  0%, 32.52078%, 65.66275%, 99.18745%, 100% { opacity: 0; transform: none; }
+  31.56392% { opacity: 1; transform: translateX(-12px); clip-path: polygon(0 12%,100% 12%,100% 25%,0 25%,0 46%,100% 46%,100% 56%,0 56%,0 78%,100% 78%,100% 86%,0 86%); }
+  31.94667% { transform: translateX(9px); clip-path: inset(38% 0 42%); }
+  32.13804% { transform: translateX(-6px); clip-path: inset(72% 0 12%); }
+  64.89725% { opacity: 1; transform: translateX(12px); clip-path: polygon(0 5%,100% 5%,100% 18%,0 18%,0 40%,100% 40%,100% 53%,0 53%,0 76%,100% 76%,100% 90%,0 90%); }
+  65.28000% { transform: translateX(-9px); clip-path: inset(22% 0 54%); }
+  98.23059% { opacity: 1; transform: translateX(-12px); clip-path: inset(15% 0 63%); }
+  98.61333% { transform: translateX(11px); clip-path: inset(48% 0 32%); }
+  98.99608% { transform: translateX(-7px); clip-path: inset(73% 0 8%); }
+}
+@keyframes comic-tear-pink {
+  0%, 32.52078%, 65.66275%, 99.18745%, 100% { opacity: 0; transform: none; }
+  31.56392% { opacity: 1; transform: translateX(12px); clip-path: inset(28% 0 56%); }
+  31.94667% { transform: translateX(-10px); clip-path: inset(58% 0 26%); }
+  32.32941% { transform: translateX(5px); clip-path: inset(8% 0 78%); }
+  64.89725% { opacity: 1; transform: translateX(-12px); clip-path: inset(55% 0 22%); }
+  65.28000% { transform: translateX(8px); clip-path: inset(10% 0 74%); }
+  98.23059% { opacity: 1; transform: translateX(10px); clip-path: inset(41% 0 40%); }
+  98.61333% { transform: translateX(-12px); clip-path: inset(70% 0 8%); }
+  98.99608% { transform: translateX(6px); clip-path: inset(12% 0 74%); }
+}
+.sc-comic.comic-glitch, .sc-number.comic-glitch {
+  animation-name: comic-registration, comic-ink;
+  animation-duration: 25.5s, 25.5s;
+}
+@keyframes comic-ink {
+  0%, 32.71216%, 65.85412%, 99.37882%, 100% { background-color: var(--yellow); }
+  31.37255%, 64.70588%, 98.03922% { background-color: #ff9acb; }
+  32.32941%, 65.47137%, 98.99608% { background-color: #d7fa68; }
+}
+body.paused .comic-glitch { animation: none; }
+body.paused .comic-glitch-copy { display: none; animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .comic-glitch { animation: none !important; }
+  .comic-glitch-copy { display: none !important; animation: none !important; }
+}
