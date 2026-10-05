@@ -54,20 +54,22 @@ Added October 5, 2026. All six images are real light-microscope blood films. Ima
 ## Teaching safeguards
 The DNA lesson is a conceptual comparison, not a patient growth model. Ordinary replication does not cause leukemia by itself; acquired changes can alter growth, maturation, and survival, and descendants can inherit them. Clonal expansion also occurs in normal immunity. CLL is not described as a blast leukemia. Smudge cells are preparation artifacts and not specific to CLL. AML/ALL morphology alone does not determine every lineage. The adult interval used is 4,500–11,000 WBCs/µL; laboratory and age-specific reference intervals vary. No diagnostic blast percentage cutoffs or treatment recommendations are taught.
 ## normal-count-field.jpg
-- Title: Normal peripheral blood smear with a neutrophil
-- Creator: Ajay Kumar Chaurasiya
-- Source: https://commons.wikimedia.org/wiki/File:WBC_(neutrophil)_at_centre,_numerous_erythrocytes_and_platelets_(dot_like_bodies)_in_Wright's_stained_peripheral_blood_smear_(PBS)_microscopy.jpg
-- Original: https://upload.wikimedia.org/wikipedia/commons/0/0b/WBC_%28neutrophil%29_at_centre%2C_numerous_erythrocytes_and_platelets_%28dot_like_bodies%29_in_Wright%27s_stained_peripheral_blood_smear_%28PBS%29_microscopy.jpg
+- Title: Neutrophils with segmented nuclei
+- Creator: Animalculist
+- Source: https://commons.wikimedia.org/wiki/File:Neutrophils_with_segmented_nuclei.jpg
+- Original: https://upload.wikimedia.org/wikipedia/commons/6/6a/Neutrophils_with_segmented_nuclei.jpg
 - License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/
-- Modifications: Resized proportionally to 1400 × 1050 pixels and JPEG-compressed, without cropping or content alteration. Shared under CC BY-SA 4.0.
+- Modifications: Resized proportionally to 1400 × 1168 pixels and JPEG-compressed, without cropping or color/content alteration. Shared under CC BY-SA 4.0.
+- Context: Two segmented neutrophils in a blood film. No CBC or clinical history is supplied; illustrates mature neutrophils, not a verified normal patient count.
 
 ## cll-smudge.jpg
-- Title: Chronic Lymphocytic Leukaemia (lymphocytosis and smear cells)
-- Creator: Prof. Erhabor Osaro
-- Source: https://commons.wikimedia.org/wiki/File:Chronic_Lymphocytic_Leukaemia_(lymphocytosis_and_smear_cells).jpg
-- Original: https://upload.wikimedia.org/wikipedia/commons/2/24/Chronic_Lymphocytic_Leukaemia_%28lymphocytosis_and_smear_cells%29.jpg
-- License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/
-- Modifications: None; original JPEG retained.
+- Title: Smudge cell in a peripheral blood smear
+- Creator: Mikael Häggström, M.D.
+- Source: https://commons.wikimedia.org/wiki/File:Smudge_cell_in_a_peripheral_blood_smear.jpg
+- Original: https://upload.wikimedia.org/wikipedia/commons/e/e6/Smudge_cell_in_a_peripheral_blood_smear.jpg
+- License: CC0 1.0 — https://creativecommons.org/publicdomain/zero/1.0/
+- Modifications: None; original 509 × 441 JPEG retained.
+- Context: Separate close-up to demonstrate smudge-cell morphology; the source does not provide a confirmed CLL diagnosis.
 
 ## Count-photo comparison
 The normal, CLL, and AML photographs are separate cases at different magnifications. No exact CBC values are known for these image files; none is assigned to the hypothetical 7,000 / 21,000 / 70,000 examples. The comparison is qualitative, not a calibrated concentration series.
