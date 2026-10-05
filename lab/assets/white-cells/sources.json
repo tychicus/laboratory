@@ -1,0 +1,157 @@
+{
+  "retrieved": "2026-10-05",
+  "photos": {
+    "neutrophil": {
+      "file": "neutrophil.webp",
+      "author": "Cheong MYY et al. (2026); PBC dataset: Acevedo et al.",
+      "source": "https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001514",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "Figure 1, PBC row, neutrophil column",
+      "modifications": "Individual cell-image panel cropped from published Figure 1 and saved as WebP; 421 \u00d7 421 pixels. No recoloring or AI enhancement."
+    },
+    "lymphocyte": {
+      "file": "lymphocyte.webp",
+      "author": "Cheong MYY et al. (2026); PBC dataset: Acevedo et al.",
+      "source": "https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001514",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "Figure 1, PBC row, lymphocyte column",
+      "modifications": "Individual cell-image panel cropped from published Figure 1 and saved as WebP; 421 \u00d7 421 pixels. No recoloring or AI enhancement."
+    },
+    "monocyte": {
+      "file": "monocyte.webp",
+      "author": "Cheong MYY et al. (2026); PBC dataset: Acevedo et al.",
+      "source": "https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001514",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "Figure 1, PBC row, monocyte column",
+      "modifications": "Individual cell-image panel cropped from published Figure 1 and saved as WebP; 421 \u00d7 421 pixels. No recoloring or AI enhancement."
+    },
+    "eosinophil": {
+      "file": "eosinophil.webp",
+      "author": "Cheong MYY et al. (2026); PBC dataset: Acevedo et al.",
+      "source": "https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001514",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "Figure 1, PBC row, eosinophil column",
+      "modifications": "Individual cell-image panel cropped from published Figure 1 and saved as WebP; 421 \u00d7 421 pixels. No recoloring or AI enhancement."
+    },
+    "basophil": {
+      "file": "basophil.webp",
+      "author": "Cheong MYY et al. (2026); PBC dataset: Acevedo et al.",
+      "source": "https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0001514",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "Figure 1, PBC row, basophil column",
+      "modifications": "Individual cell-image panel cropped from published Figure 1 and saved as WebP; 421 \u00d7 421 pixels. No recoloring or AI enhancement."
+    },
+    "promyelocyte": {
+      "file": "promyelocyte.webp",
+      "author": "Wang Q, Bi S, Sun M, Wang Y, Wang D, Yang S (2019)",
+      "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "B, row 1",
+      "modifications": "One complete cell-image panel cropped from Figure 2; saved as WebP. No recoloring or AI enhancement."
+    },
+    "myelocyte": {
+      "file": "myelocyte.webp",
+      "author": "Wang Q, Bi S, Sun M, Wang Y, Wang D, Yang S (2019)",
+      "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "C, row 1",
+      "modifications": "One complete cell-image panel cropped from Figure 2; saved as WebP. No recoloring or AI enhancement."
+    },
+    "metamyelocyte": {
+      "file": "metamyelocyte.webp",
+      "author": "Wang Q, Bi S, Sun M, Wang Y, Wang D, Yang S (2019)",
+      "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "D, row 1",
+      "modifications": "One complete cell-image panel cropped from Figure 2; saved as WebP. No recoloring or AI enhancement."
+    },
+    "band": {
+      "file": "band.webp",
+      "author": "Wang Q, Bi S, Sun M, Wang Y, Wang D, Yang S (2019)",
+      "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "E, row 1",
+      "modifications": "One complete cell-image panel cropped from Figure 2; saved as WebP. No recoloring or AI enhancement."
+    },
+    "neutrophil-stage": {
+      "file": "neutrophil-stage.webp",
+      "author": "Wang Q, Bi S, Sun M, Wang Y, Wang D, Yang S (2019)",
+      "source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "panel": "F, row 1",
+      "modifications": "One complete cell-image panel cropped from Figure 2; saved as WebP. No recoloring or AI enhancement."
+    }
+  },
+  "science": {
+    "maturation": [
+      "Histology Guide \u00b7 Blood cell development",
+      "https://histologyguide.com/slidebox/08-hematopoiesis.html"
+    ],
+    "granules": [
+      "University of Bern \u00b7 Granulocyte maturation",
+      "https://hemosurf.elearning.aum.iml.unibe.ch/hemosurf_demo/Demo_E_v3/Data/Data_E/Info/Myp.htm"
+    ],
+    "morphology": [
+      "University of Leeds \u00b7 White blood cells",
+      "https://www.histology.leeds.ac.uk/blood/blood_wbc.php/quiz/"
+    ],
+    "lineage": [
+      "Histology Guide \u00b7 Hematopoiesis",
+      "https://histologyguide.com/figureview/fig-027-hematopoiesis/08-figure-1.html"
+    ],
+    "monocyte": [
+      "Histology Guide \u00b7 Monocytes in bone marrow",
+      "https://histologyguide.com/slideview/MH-034bhr-bone-marrow-smear/08-slide-7.html"
+    ],
+    "neutrophils": [
+      "British Society for Immunology \u00b7 Neutrophils",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/neutrophils"
+    ],
+    "eosinophils": [
+      "British Society for Immunology \u00b7 Eosinophils",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/eosinophils"
+    ],
+    "basophils": [
+      "British Society for Immunology \u00b7 Basophils",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/basophils"
+    ],
+    "macrophages": [
+      "British Society for Immunology \u00b7 Macrophages",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/macrophages"
+    ],
+    "b-cells": [
+      "British Society for Immunology \u00b7 B Cells",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/b-cells"
+    ],
+    "helper-and-cytotoxic-t-cells": [
+      "British Society for Immunology \u00b7 Helper And Cytotoxic T Cells",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/helper-and-cytotoxic-t-cells"
+    ],
+    "natural-killer-cells": [
+      "British Society for Immunology \u00b7 Natural Killer Cells",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/natural-killer-cells"
+    ],
+    "monocytes-extra": [
+      "Hashimoto et al. (2013) \u00b7 Tissue-resident macrophage maintenance",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3853406/"
+    ],
+    "nk-cells-extra": [
+      "Freud et al. (2006) \u00b7 Human NK-cell developmental stages",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC2118285/"
+    ],
+    "t-cells-extra": [
+      "British Society for Immunology \u00b7 Regulatory T cells",
+      "https://www.immunology.org/public-information/bitesized-immunology/cells/regulatory-t-cells-tregs"
+    ]
+  }
+}
