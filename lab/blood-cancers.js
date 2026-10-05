@@ -33,19 +33,16 @@
   const count = document.querySelector('[data-count-lesson]');
   if (count) {
     const buttons = [...count.querySelectorAll('[data-count-value]')];
-    const dots = count.querySelector('[data-count-dots]');
     const values = {
       7000: ['Within this example range', 'A count of 7,000 WBCs/µL falls within the adult interval used here. The cell types and the rest of the CBC still matter.'],
       21000: ['Higher than this example range', '21,000 WBCs/µL is three times this demonstration’s baseline. Infection, inflammation, medicines, and blood disorders are among the possibilities.'],
       70000: ['Much higher — investigate the cause', '70,000 WBCs/µL is ten times this demonstration’s baseline. A markedly high count requires evaluation; the number alone cannot identify a leukemia or distinguish every reactive process.']
     };
-    dots.replaceChildren(...Array.from({length:70}, () => { const dot=document.createElement('i'); dot.className='bc-dot'; return dot; }));
     function select(value, announce = true) {
       count.querySelector('[data-count-number]').textContent = value.toLocaleString('en-US');
       count.querySelector('[data-count-meter]').style.width = `${value / 700}%`;
       count.querySelector('[data-count-heading]').textContent = values[value][0];
       count.querySelector('[data-count-copy]').textContent = values[value][1];
-      [...dots.children].forEach((dot, i) => dot.classList.toggle('on', i < value / 1000));
       buttons.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.countValue) === value)));
       if (announce) count.querySelector('[data-count-live]').textContent = `${value.toLocaleString('en-US')} white blood cells per microliter. ${values[value][0]}.`;
     }

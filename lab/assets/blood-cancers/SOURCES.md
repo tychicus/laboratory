@@ -1,5 +1,5 @@
 # Abnormal white-cell lesson: images and teaching sources
-Added October 5, 2026. All four images are real light-microscope blood films. Images are displayed proportionally. The AML image is resized and JPEG-compressed for web delivery; the other three images retain their original files. These are separate cases at different magnifications; never use on-screen size or field density as a quantitative patient comparison. No photo is linked to the hypothetical CBC values.
+Added October 5, 2026. All six images are real light-microscope blood films. Images are displayed proportionally. The AML image is resized and JPEG-compressed for web delivery; the original CLL, ALL, and reactive images retain their original files. The added normal blood film is resized and compressed; the smudge-cell JPEG is unchanged. These are separate cases at different magnifications; never use on-screen size or field density as a quantitative patient comparison. No photo is linked to the hypothetical CBC values.
 
 ## aml.jpg
 - Title: Acute Myeloid Leukemia (M2 type)
@@ -53,3 +53,21 @@ Added October 5, 2026. All four images are real light-microscope blood films. Im
 
 ## Teaching safeguards
 The DNA lesson is a conceptual comparison, not a patient growth model. Ordinary replication does not cause leukemia by itself; acquired changes can alter growth, maturation, and survival, and descendants can inherit them. Clonal expansion also occurs in normal immunity. CLL is not described as a blast leukemia. Smudge cells are preparation artifacts and not specific to CLL. AML/ALL morphology alone does not determine every lineage. The adult interval used is 4,500–11,000 WBCs/µL; laboratory and age-specific reference intervals vary. No diagnostic blast percentage cutoffs or treatment recommendations are taught.
+## normal-count-field.jpg
+- Title: Normal peripheral blood smear with a neutrophil
+- Creator: Ajay Kumar Chaurasiya
+- Source: https://commons.wikimedia.org/wiki/File:WBC_(neutrophil)_at_centre,_numerous_erythrocytes_and_platelets_(dot_like_bodies)_in_Wright's_stained_peripheral_blood_smear_(PBS)_microscopy.jpg
+- Original: https://upload.wikimedia.org/wikipedia/commons/0/0b/WBC_%28neutrophil%29_at_centre%2C_numerous_erythrocytes_and_platelets_%28dot_like_bodies%29_in_Wright%27s_stained_peripheral_blood_smear_%28PBS%29_microscopy.jpg
+- License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/
+- Modifications: Resized proportionally to 1400 × 1050 pixels and JPEG-compressed, without cropping or content alteration. Shared under CC BY-SA 4.0.
+
+## cll-smudge.jpg
+- Title: Chronic Lymphocytic Leukaemia (lymphocytosis and smear cells)
+- Creator: Prof. Erhabor Osaro
+- Source: https://commons.wikimedia.org/wiki/File:Chronic_Lymphocytic_Leukaemia_(lymphocytosis_and_smear_cells).jpg
+- Original: https://upload.wikimedia.org/wikipedia/commons/2/24/Chronic_Lymphocytic_Leukaemia_%28lymphocytosis_and_smear_cells%29.jpg
+- License: CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/
+- Modifications: None; original JPEG retained.
+
+## Count-photo comparison
+The normal, CLL, and AML photographs are separate cases at different magnifications. No exact CBC values are known for these image files; none is assigned to the hypothetical 7,000 / 21,000 / 70,000 examples. The comparison is qualitative, not a calibrated concentration series.

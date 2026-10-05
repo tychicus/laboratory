@@ -45,6 +45,28 @@
       "original": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Reactive_lymph.JPG",
       "caption": "A reactive lymphocyte surrounded by red cells. The source does not identify a specific infection.",
       "alt": "Real blood smear with a single large reactive lymphocyte near the center, an irregular purple nucleus, and pale blue cytoplasm among many pink red cells."
+    },
+    "normal_count": {
+      "file": "normal-count-field.jpg",
+      "title": "Normal peripheral blood smear with a neutrophil",
+      "author": "Ajay Kumar Chaurasiya",
+      "page": "https://commons.wikimedia.org/wiki/File:WBC_(neutrophil)_at_centre,_numerous_erythrocytes_and_platelets_(dot_like_bodies)_in_Wright's_stained_peripheral_blood_smear_(PBS)_microscopy.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/0b/WBC_%28neutrophil%29_at_centre%2C_numerous_erythrocytes_and_platelets_%28dot_like_bodies%29_in_Wright%27s_stained_peripheral_blood_smear_%28PBS%29_microscopy.jpg",
+      "alt": "One neutrophil with a segmented purple nucleus among many pink red cells and tiny purple platelets.",
+      "modifications": "Resized proportionally to 1400 \u00d7 1050 pixels and JPEG-compressed, without cropping or content alteration. Shared under CC BY-SA 4.0."
+    },
+    "cll_smudge": {
+      "file": "cll-smudge.jpg",
+      "title": "Chronic Lymphocytic Leukaemia (lymphocytosis and smear cells)",
+      "author": "Prof. Erhabor Osaro",
+      "page": "https://commons.wikimedia.org/wiki/File:Chronic_Lymphocytic_Leukaemia_(lymphocytosis_and_smear_cells).jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/24/Chronic_Lymphocytic_Leukaemia_%28lymphocytosis_and_smear_cells%29.jpg",
+      "alt": "CLL blood film with many small dark lymphocytes and spread-out purple smudge cells near the left edge, right edge, and lower part of the image.",
+      "modifications": "None; original JPEG retained."
     }
   },
   "science": {
