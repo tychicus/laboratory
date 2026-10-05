@@ -5,6 +5,30 @@ function setMotion(){document.body.classList.toggle('paused',paused);motion.text
 setMotion();motion.addEventListener('click',()=>{paused=!paused;setMotion()});
 const stage=document.querySelector('.microscope-stage');
 const welcome=document.querySelector('.welcome-layer');
+// Anchor the power ring, rather than the whole welcome message, to the lens.
+const welcomeCopy=welcome.querySelector('.intro-copy');
+const powerRing=welcome.querySelector('.power-ring');
+const lens=document.querySelector('.lens-surface');
+function centerWelcome(){
+ const field=lens.getBoundingClientRect();
+ const layer=welcome.getBoundingClientRect();
+ const copy=welcomeCopy.getBoundingClientRect();
+ const ring=powerRing.getBoundingClientRect();
+ welcome.style.setProperty('--field-x',`${field.left+field.width/2-layer.left}px`);
+ welcome.style.setProperty('--field-y',`${field.top+field.height/2-layer.top}px`);
+ welcomeCopy.style.setProperty('--power-offset',`${ring.top+ring.height/2-copy.top}px`);
+ welcome.classList.add('field-aligned');
+}
+let alignmentFrame;
+function queueWelcomeAlignment(){
+ cancelAnimationFrame(alignmentFrame);
+ alignmentFrame=requestAnimationFrame(centerWelcome);
+}
+const welcomeResize=new ResizeObserver(queueWelcomeAlignment);
+for(const element of [document.querySelector('header'),stage,lens,welcome,welcomeCopy])welcomeResize.observe(element);
+window.addEventListener('resize',queueWelcomeAlignment);
+document.fonts.ready.then(queueWelcomeAlignment);
+centerWelcome();
 let entered=false;
 function reveal(focus=false){entered=true;stage.inert=false;welcome.inert=true;document.body.classList.remove('welcoming','entering');document.body.classList.add('welcome-dismissed');if(focus)document.getElementById('field-title').focus();}
 if(location.hash==='#microscope')reveal();else stage.inert=true;
