@@ -1,0 +1,100 @@
+{
+  "retrieved": "2026-10-05",
+  "photos": {
+    "aml": {
+      "file": "aml.jpg",
+      "title": "Acute Myeloid Leukemia (M2 type)",
+      "author": "Makysm",
+      "page": "https://commons.wikimedia.org/wiki/File:Acute_Myeloid_Leukemia_(M2_type).jpg",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/21/Acute_Myeloid_Leukemia_%28M2_type%29.jpg",
+      "caption": "AML blood film. The source identifies Auer rods in some cells; not every AML case has them. \u201cM2\u201d is the source\u2019s historical classification.",
+      "alt": "Real AML blood film with numerous large purple immature cells, including cells with visible nucleoli, among red cells.",
+      "modifications": "Resized proportionally to 1400 \u00d7 1168 pixels and JPEG-compressed; no cropping or content alteration."
+    },
+    "cll": {
+      "file": "cll-confirmed.jpg",
+      "title": "Chronic lymphocytic leukemia",
+      "author": "Mary Ann Thompson / VashiDonsk at English Wikipedia",
+      "page": "https://commons.wikimedia.org/wiki/File:Chronic_lymphocytic_leukemia.jpg",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Chronic_lymphocytic_leukemia.jpg",
+      "caption": "CLL peripheral blood smear, Wright stain. Source microscope magnification: 1000\u00d7; on-screen size varies.",
+      "alt": "Real CLL blood smear with several small round purple lymphocytes, little visible cytoplasm, and surrounding pink red blood cells."
+    },
+    "all": {
+      "file": "all.jpg",
+      "title": "Lymphoblasts in acute lymphoblastic leukemia",
+      "author": "SpicyMilkBoy",
+      "page": "https://commons.wikimedia.org/wiki/File:Lymphoblasts_in_acute_lymphoblastic_leukemia.jpg",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Lymphoblasts_in_acute_lymphoblastic_leukemia.jpg",
+      "caption": "Lymphoblasts in peripheral blood from a patient with ALL. The source does not specify B- or T-lineage.",
+      "alt": "Real ALL blood film showing several purple lymphoblasts with large nuclei and narrow rims of cytoplasm among red blood cells."
+    },
+    "reactive": {
+      "file": "reactive.jpg",
+      "title": "Reactive lymph",
+      "author": "Bobjgalindo",
+      "page": "https://commons.wikimedia.org/wiki/File:Reactive_lymph.JPG",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Reactive_lymph.JPG",
+      "caption": "A reactive lymphocyte surrounded by red cells. The source does not identify a specific infection.",
+      "alt": "Real blood smear with a single large reactive lymphocyte near the center, an irregular purple nucleus, and pale blue cytoplasm among many pink red cells."
+    }
+  },
+  "science": {
+    "dna": [
+      "NCI \u00b7 What is cancer?",
+      "https://www.cancer.gov/about-cancer/understanding/what-is-cancer"
+    ],
+    "genetics": [
+      "NCI \u00b7 The genetics of cancer",
+      "https://www.cancer.gov/about-cancer/causes-prevention/genetics"
+    ],
+    "aml": [
+      "NCI \u00b7 Acute myeloid leukemia",
+      "https://www.cancer.gov/types/leukemia/patient/adult-aml-treatment-pdq"
+    ],
+    "cll": [
+      "NCI \u00b7 Chronic lymphocytic leukemia",
+      "https://www.cancer.gov/types/leukemia/patient/cll-treatment-pdq"
+    ],
+    "all": [
+      "NCI \u00b7 Acute lymphoblastic leukemia",
+      "https://www.cancer.gov/types/leukemia/patient/child-all-treatment-pdq"
+    ],
+    "counts": [
+      "MedlinePlus \u00b7 White blood cell count",
+      "https://medlineplus.gov/ency/article/003643.htm"
+    ],
+    "counttest": [
+      "MedlinePlus \u00b7 Understanding WBC testing",
+      "https://medlineplus.gov/lab-tests/white-blood-count-wbc/"
+    ],
+    "reactive": [
+      "ASH Image Bank \u00b7 Reactive lymphocyte morphology",
+      "https://imagebank.hematology.org/image/60515/reactive-lymphocyte"
+    ],
+    "blast": [
+      "ASH Image Bank \u00b7 Myeloblast with Auer rod",
+      "https://imagebank.hematology.org/image/60924/myeloblast-with-auer-rod?type=atlas"
+    ],
+    "smudge": [
+      "ASH Image Bank \u00b7 Smudge cells in CLL",
+      "https://imagebank.hematology.org/image/1023/smudge-cells--1"
+    ],
+    "cllkinetics": [
+      "McKenna et al. \u00b7 CLL cell survival and growth, Blood (2018)",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6024641/"
+    ],
+    "cllmorph": [
+      "NCI \u00b7 CLL professional summary",
+      "https://www.cancer.gov/types/leukemia/hp/cll-treatment-pdq"
+    ]
+  }
+}
