@@ -6,8 +6,6 @@
   const scene = $('infection-scene');
   if (!scene) return;
   let stage = 0, fraction = 0, playing = false, previousTime = null, frame = null;
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let reduced = reducedMotion.matches;
   const play = $('play-cycle');
   const buttons = [...document.querySelectorAll('[data-stage]')];
   const positions = Array.from({length:24},(_,i)=>i>=16&&i%6>=4 ? [285+((Math.floor(i/6)-2)*2+i%6-4)*67,416] : [285+(i%6)*67,200+Math.floor(i/6)*59]);
@@ -99,14 +97,11 @@
     draw(); frame=requestAnimationFrame(tick);
   }
   function motionHint() {
-    $('motion-hint').textContent=reduced
-      ?'Reduced motion is enabled. Use the numbered stages or Back / Next to explore still frames.'
-      :'The animation starts only when you press Play. Each stage takes about 5.5 seconds at 1× speed.';
-    play.disabled=reduced;
+    $('motion-hint').textContent='The animation starts only when you press Play. Each stage takes about 5.5 seconds at 1× speed.';
+    play.disabled=false;
   }
   play.addEventListener('click',()=>{
     if(playing){stop();return;}
-    if(reduced)return;
     // A deliberate Play request resumes the site's global motion toggle too.
     if(document.body.classList.contains('paused')) $('motion').click();
     if(stage===6&&fraction===1)stage=0;
@@ -117,14 +112,12 @@
   });
   $('previous-step').addEventListener('click',()=>select(stage-1));
   $('next-step').addEventListener('click',()=>select(stage+1));
-  $('restart-cycle').addEventListener('click',()=>{stop();stage=0;fraction=reduced?1:0;caption();draw();play.textContent='Play animation';});
+  $('restart-cycle').addEventListener('click',()=>{stop();stage=0;fraction=0;caption();draw();play.textContent='Play animation';});
   buttons.forEach(b=>b.addEventListener('click',()=>select(Number(b.dataset.stage))));
   $('motion').addEventListener('click',()=>{if(document.body.classList.contains('paused'))stop();});
   document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
-  reducedMotion.addEventListener('change',event=>{reduced=event.matches;stop();if(reduced)fraction=1;motionHint();draw();});
   window.addEventListener('pagehide',stop);
   $('animation-controls').hidden=false;
-  if(reduced)fraction=1;
   play.setAttribute('aria-pressed','false');
   caption();draw();motionHint();
 })();

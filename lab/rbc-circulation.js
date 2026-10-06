@@ -1,7 +1,6 @@
 (() => {
   const svg = document.querySelector('.staged-circulation');
   if (!svg) return;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const buttons = [...document.querySelectorAll('[data-select-stage]')];
   const panels = [...document.querySelectorAll('[data-panel]')];
   const routes = [...svg.querySelectorAll('.stage-route')];
@@ -50,7 +49,7 @@
   document.querySelector('.stage-next').hidden = false;
   select(0, false);
   function tick(now) {
-    if (last !== null && !document.hidden && !document.body.classList.contains('paused') && !reduced.matches) {
+    if (last !== null && !document.hidden && !document.body.classList.contains('paused')) {
       elapsed += Math.min(now - last, 80); draw();
     }
     last = now; requestAnimationFrame(tick);

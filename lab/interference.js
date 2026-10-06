@@ -1,8 +1,7 @@
 /* Brief, silent visual interference. Never replaces text or targets controls. */
 (() => {
-  const preference = matchMedia('(prefers-reduced-motion: reduce)');
   let timer, active, selected, last;
-  const blocked = () => preference.matches || document.hidden || document.body.classList.contains('paused');
+  const blocked = () => document.hidden || document.body.classList.contains('paused');
   const interactive = 'a,button,summary,input,select,textarea,[contenteditable],nav,[role="button"]';
   const patterns = [
     [{filter:'none',translate:'0px',textShadow:'none'},{offset:.3,filter:'blur(.7px)',translate:'2px',textShadow:'-2px 0 #ff79cd, 2px 0 #7fffee'},{offset:.55,filter:'none',translate:'-1px',textShadow:'1px 0 #7fffee'},{filter:'none',translate:'0px',textShadow:'none'}],
@@ -38,7 +37,6 @@
     schedule();
   }
   function sync() { clearEffect(); schedule(); }
-  preference.addEventListener('change', sync);
   document.addEventListener('visibilitychange', sync);
   new MutationObserver(sync).observe(document.body, {attributes:true,attributeFilter:['class']});
   // Stop immediately if the audience or presenter starts interacting with it.

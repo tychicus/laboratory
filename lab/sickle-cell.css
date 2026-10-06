@@ -3,7 +3,7 @@
 @media(min-width:1600px){.sc-slide{padding-top:40px}.sc-slide p{font-size:34px}}
 @media(max-width:850px){.sc-chain,.sc-care-grid,.sc-effects{gap:14px}.sc-chain>div,.sc-care-grid>div,.sc-effects>div{padding:18px}.sc-inheritance{grid-template-columns:1fr}.sc-inheritance figure{max-width:600px;justify-self:center}.sc-inheritance img{max-height:none}.sc-slide h3{font-size:25px}.sc-slide p{font-size:24px}}
 @media(max-width:600px){.topic-main:has(.sickle-story){padding:22px 5%}.sc-controls{gap:8px;padding:10px 0;flex-wrap:wrap}.sc-controls button{font-size:14px;padding:9px 11px}.sc-progress{font-size:14px;min-width:44px}.sc-controls [data-overview]{margin-left:0}.sc-slide{min-height:0;padding:28px 0}.sc-slide h1{font-size:clamp(55px,14vw,78px)}.sc-image-grid,.sc-chain,.sc-effects,.sc-care-grid{grid-template-columns:1fr}.sc-image-link{height:300px}.sc-kicker{font-size:11px}.sc-slide p{font-size:23px}.sc-chain>div,.sc-care-grid>div,.sc-effects>div{padding:22px}.sc-odds{gap:12px}.sc-odds span{font-size:17px}.sc-odds strong{font-size:38px}.sc-hero-line .science-hero{margin:12px 0;width:45px!important}.sc-takeaway{padding:15px;font-size:22px!important}.sc-comic{padding:12px 16px}.sc-notes p{font-size:17px}}
-@media(prefers-reduced-motion:reduce){.sickle-story *{scroll-behavior:auto!important}}
+
 
 @media(min-width:601px) and (max-width:1000px){.sc-effects{grid-template-columns:1fr}.sc-effects>div{padding:22px}}
 

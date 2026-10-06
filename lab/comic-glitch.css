@@ -79,7 +79,3 @@
 }
 body.paused .comic-glitch { animation: none; }
 body.paused .comic-glitch-copy { display: none; animation: none; }
-@media (prefers-reduced-motion: reduce) {
-  .comic-glitch { animation: none !important; }
-  .comic-glitch-copy { display: none !important; animation: none !important; }
-}
