@@ -22,3 +22,12 @@ https://www.cellstructureatlas.org/img/stillimages/2_10_Bbacteriovorus_before.jp
 https://www.cellstructureatlas.org/img/stillimages/2_10_Bbacteriovorus_after.jpg
 
 Modifications: proportionally resized from 1920×1080 to 1440×810 and encoded as WebP. No cropping, recoloring, or new scientific annotations. Original scale bars and labels preserved. Color is a source-provided teaching overlay, not natural coloration. These assets are used for this noncommercial educational presentation.
+
+## E. coli SEM — current anatomy flip-card front
+- File: `ecoli-sem.webp`
+- Credit: Rocky Mountain Laboratories, NIAID, NIH.
+- Source: https://commons.wikimedia.org/wiki/File:EscherichiaColi_NIAID.jpg
+- Original: https://upload.wikimedia.org/wikipedia/commons/3/3a/E._coli_Bacteria_%287316101966%29.jpg
+- Public domain in the United States (NIH work); Commons also records the original Flickr CC BY 2.0 license (https://creativecommons.org/licenses/by/2.0/).
+- Resized to 1440 pixels wide and WebP-compressed. Full frame, grayscale, and 2 µm scale bar preserved. No anatomical annotations added.
+- SEM depicts surfaces; internal DNA is explained with the separate teaching diagram.
