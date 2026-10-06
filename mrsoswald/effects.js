@@ -75,4 +75,7 @@ function paint(t){ctx.clearRect(0,0,1536,1024);sunlight(t);
  for(let i=0;i<38;i++){let x=(i*237.7+t*(2+i%4))%1536,y=(i*113.7-t*(1+i%3)+2048)%1024;ctx.fillStyle=`rgba(255,237,184,${.12+.1*Math.sin(t+i)})`;ctx.beginPath();ctx.arc(x,y,.6+i%3*.35,0,7);ctx.fill();}
 }
 function frame(ms){if(!last)last=ms;const dt=Math.min((ms-last)/1000,.05);last=ms;if(!paused&&!document.hidden){elapsed+=dt;paint(elapsed);}requestAnimationFrame(frame);}paint(0);requestAnimationFrame(frame);
-const viewport=document.getElementById('viewport');viewport.scrollLeft=(viewport.scrollWidth-viewport.clientWidth)/2;
+// Fit the entire 3:2 image into the available space; the canvas shares its bounds.
+const viewport=document.getElementById('viewport'),scene=document.getElementById('scene');
+function fitScene(){const width=Math.min(viewport.clientWidth,viewport.clientHeight*1.5);scene.style.setProperty('--scene-width',width+'px');}
+new ResizeObserver(fitScene).observe(viewport);fitScene();
