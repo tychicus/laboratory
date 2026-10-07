@@ -49,3 +49,20 @@ All diagrams are original simplified teaching illustrations. B, T, and NK identi
 - [Hashimoto et al. (2013) · Tissue-resident macrophage maintenance](https://pmc.ncbi.nlm.nih.gov/articles/PMC3853406/)
 - [Freud et al. (2006) · Human NK-cell developmental stages](https://pmc.ncbi.nlm.nih.gov/articles/PMC2118285/)
 - [British Society for Immunology · Regulatory T cells](https://www.immunology.org/public-information/bitesized-immunology/cells/regulatory-t-cells-tregs)
+
+## NK-cell lesson photographs
+
+- `nk-lymphocyte-1.webp`: Wang et al. (2019), Figure 2G, row 1. Crop (1202, 0, 1380, 178) from the 2180 × 928 published PNG.
+- `nk-lymphocyte-2.webp`: same source, Figure 2G, row 3. Crop (1202, 356, 1380, 534).
+  Source: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808 — CC BY 4.0. These are representative lymphocytes only; neither NK identity nor immature/mature NK status is established by the source. Their placement accompanies developmental teaching, not morphological stage identification.
+- `nk-activated.webp`: Rak GD, Mace EM, Banerjee PP, Svitkina T, Orange JS (2011). Natural Killer Cell Lytic Granule Secretion Occurs through a Pervasive Actin Network at the Immune Synapse. PLOS Biology 9(9): e1001151. Figure 1A, microscopy-derived 3D projection of GFP-actin-expressing NK-92 (green) contacting mel1190 target (yellow). NK-92 is a cell line. Original scale bar represents 5 µm and is retained. Crop (194, 314, 808, 880) from the 1880 × 2616 published PNG. Source: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001151 — Creative Commons Attribution, https://creativecommons.org/licenses/by/2.5/ (article license).
+
+All three are rectangular panel crops converted to WebP, without recoloring, synthesis, or AI enhancement. Images are not shown at a common scale.
+
+## Precursor photograph replacements
+
+- `myeloblast-reference.webp`: Myeloblast — morphology reference. Real myeloblast from an acute myeloid leukemia case. This is a disease-associated morphology example, not healthy marrow or a cell tracked through normal maturation. El*Falaf (2014), CC BY-SA 4.0. https://commons.wikimedia.org/wiki/File:Myeloblast.jpg
+- `monoblast-reference.webp`: Monoblast — morphology reference. The arrow marks a monoblast. This published example comes from a patient with a clonal monocytic neoplasm, not healthy marrow. Zini et al., ICSH recommendations, Fig. 1B, CC BY 4.0. https://doi.org/10.1111/ijlh.70029
+- `hematogones-reference.webp`: Benign B-cell precursors (hematogones). Real marrow field containing small and large hematogones alongside other marrow cells. A benign precursor example from a clinical case, not a healthy-donor reference. Agarwal et al. (2010), Fig. 2, CC BY 2.0. https://pmc.ncbi.nlm.nih.gov/articles/PMC2844362/
+
+Myeloblast: complete original photo converted to WebP; derivative remains CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). Monoblast: Figure 1B cropped at (360, 0, 709, 260) from 709 × 510 downloaded image, arrow retained; https://creativecommons.org/licenses/by/4.0/. Hematogones: entire Figure 2 converted to WebP; https://creativecommons.org/licenses/by/2.0/. No recoloring, synthesis, or AI enhancement. Hematogones are B-lineage precursors; their use on T/NK pages is explicitly comparative, not a lineage assignment. Stem-cell diagram retained because generic blasts do not establish HSC identity.
