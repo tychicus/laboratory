@@ -1,0 +1,6 @@
+/* Layout space, rather than an overlay, keeps the sidekick off lesson content. */
+.lab-hero-visit{display:flex!important;align-items:center;justify-content:flex-start;grid-column:1/-1;flex:0 0 auto;width:100%;min-height:80px;margin:12px 0;padding:0 12px;pointer-events:none;clear:both}
+.lab-hero-visit[data-alignment="center"]{justify-content:center}
+.lab-hero-visit[data-alignment="end"]{justify-content:flex-end}
+.lab-hero-visit .science-hero{display:block!important;position:static!important;width:64px!important;height:auto!important;max-height:80px;object-fit:contain;opacity:.94;animation:none!important;transform:none!important;flex:none;margin:0!important}
+@media(max-width:620px){.lab-hero-visit{min-height:66px;padding:0 6px}.lab-hero-visit .science-hero{width:52px!important;max-height:66px}}
