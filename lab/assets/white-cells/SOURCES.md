@@ -74,3 +74,12 @@ The four development panels on `lymphocytes.html` use representative normal lymp
 ## Monocyte, eosinophil and basophil overview corrections
 
 All development panels on these three pages now show representative mature-cell morphology, not malignant blasts or drawings. Captions explicitly state that precursor stages are not pictured. `monocyte-example-1/2/3.webp`, `eosinophil-example-1/2/3.webp`, and `basophil-example-1/2/3.webp` use Wang et al. (2019), Figure 2 columns H/I/J respectively, rows 1–3. Source: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218808. License: https://creativecommons.org/licenses/by/4.0/. Crops are 178 × 178 pixels, x=1402/1602/1802 respectively and y=0/178/356, from the 2180 × 928 published PNG. Converted to WebP without recoloring or AI enhancement. Fourth panels reuse the previously credited mature-cell images. These are morphology examples, not proof of healthy donors.
+
+## Normal peripheral blood overview card
+
+- `normal-peripheral-blood.webp`: Keith Chambers / Scooter Project, “Normal Adult Blood Smear” (2011). Source describes a normal healthy adult blood smear stained with Giemsa.
+- Source: https://commons.wikimedia.org/wiki/File:Normal_Adult_Blood_Smear.JPG
+- Original: https://upload.wikimedia.org/wikipedia/commons/1/16/Normal_Adult_Blood_Smear.JPG
+- License: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/ . This WebP version is shared under the same license.
+- Modifications: Complete 1280 × 960 image converted to WebP; no cropping, recoloring, synthesis, or AI enhancement.
+- Teaching context: Overview of white cells, red cells, and platelets together in a normal blood film. A single field does not contain all five white-cell types and is not a quantitative differential or CBC.
