@@ -6,7 +6,7 @@
   const credits = document.getElementById('credits');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const FADE_MS = 1000;
-  const CYCLE_MS = 10000; // One second in, eight seconds to read, one second out.
+  const CYCLE_MS = 5000; // One second in, three seconds to read, one second out.
   let paused = reducedMotion.matches;
   let bag = [];
   let current = null;
