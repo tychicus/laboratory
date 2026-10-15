@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102624">
+  <meta name="description" content="A little room for big ideas. Discover the faces and words of science in Mrs Oswald’s Classroom.">
+  <title>Science &amp; Curiosity · Mrs Oswald’s Classroom</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E⚗️%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="science.css">
+  <script src="scientists.js" defer></script>
+  <script src="science.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="back" href="index.html" aria-label="Back to the classroom">← <span>The classroom</span></a>
+    <h1>Mrs Oswald’s <em>Classroom</em></h1>
+  </header>
+  <main id="sky" class="sky" aria-label="Scientist portraits and science quotations appearing in random positions" aria-live="off">
+    <noscript><p class="no-script">Discover the people and ideas behind science. Enable JavaScript to see the rotating portraits and quotations.</p></noscript>
+  </main>
+  <footer class="controls">
+    <span class="small-note">A little room for big ideas.</span>
+    <div class="actions">
+      <button type="button" id="pause" aria-pressed="false">Pause</button>
+      <button type="button" id="shuffle">Another view</button>
+      <button type="button" id="sources">Sources</button>
+    </div>
+  </footer>
+  <dialog id="credits" aria-labelledby="credits-title">
+    <div class="dialog-heading"><h2 id="credits-title">The people behind the ideas</h2><button type="button" id="close-credits" aria-label="Close sources">×</button></div>
+    <p class="credits-intro">Original words, real faces. Explore the quotation sources and portrait credits below.</p>
+    <div id="source-list"></div>
+  </dialog>
+</body>
+</html>
