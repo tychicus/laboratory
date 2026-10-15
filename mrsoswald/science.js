@@ -2,12 +2,9 @@
 (() => {
   const scientists = window.SCIENTISTS;
   const sky = document.getElementById('sky');
-  const pauseButton = document.getElementById('pause');
   const credits = document.getElementById('credits');
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const FADE_MS = 1000;
   const CYCLE_MS = 5000; // One second in, three seconds to read, one second out.
-  let paused = reducedMotion.matches;
   let bag = [];
   let current = null;
   let frameId = 0;
@@ -59,7 +56,7 @@
     figure.append(image, caption);
     if (current) current.element.remove();
     sky.append(figure);
-    current = {person, quote, element:figure, age: paused ? FADE_MS : 0};
+    current = {person, quote, element:figure, age: 0};
     paint();
     // Only the matching portrait and quote share this fade; neither rotates alone.
     if (bag.length) { const upcoming = new Image(); upcoming.src = bag[0].image; }
@@ -70,7 +67,7 @@
     current.element.style.opacity = String(opacity);
     current.element.setAttribute('aria-hidden', String(opacity < 0.1));
   }
-  function isRunning() { return !paused && !document.hidden && !credits.open; }
+  function isRunning() { return !document.hidden; }
   function frame(time) {
     frameId = 0;
     if (!isRunning()) { lastTime = null; return; }
@@ -82,32 +79,15 @@
     frameId = requestAnimationFrame(frame);
   }
   function syncMotion() {
-    pauseButton.textContent = paused ? 'Resume' : 'Pause';
-    pauseButton.setAttribute('aria-pressed', String(paused));
-    pauseButton.setAttribute('aria-label', paused ? 'Resume fading scientist portraits and quotes' : 'Pause fading scientist portraits and quotes');
     if (frameId) cancelAnimationFrame(frameId);
     frameId = 0;
     lastTime = null;
     if (isRunning()) frameId = requestAnimationFrame(frame);
   }
-  function makeReadable() {
-    if (current) { current.age = Math.max(FADE_MS, Math.min(current.age, CYCLE_MS - FADE_MS)); paint(); }
-  }
-  pauseButton.addEventListener('click', () => {
-    paused = !paused;
-    if (paused) makeReadable();
-    syncMotion();
-  });
   document.getElementById('shuffle').addEventListener('click', () => { showNext(); syncMotion(); });
-  reducedMotion.addEventListener('change', event => {
-    paused = event.matches;
-    if (paused) makeReadable();
-    syncMotion();
-  });
   document.addEventListener('visibilitychange', syncMotion);
-  document.getElementById('sources').addEventListener('click', () => { credits.showModal(); syncMotion(); });
+  document.getElementById('sources').addEventListener('click', () => { credits.showModal(); });
   document.getElementById('close-credits').addEventListener('click', () => credits.close());
-  credits.addEventListener('close', syncMotion);
   credits.addEventListener('click', event => {
     if (event.target !== credits) return;
     const rect = credits.getBoundingClientRect();
