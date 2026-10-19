@@ -14,9 +14,9 @@ These images depict real equipment. They are not AI-generated. Copyright remains
 
 The XN-3100 is accurately identified as the requested established system; the U.S. manufacturer page now promotes an XR-Series successor. FACSCanto II is an analyzer, not a cell sorter. The two product images are manufacturer-supplied product imagery; the FACSCanto II is a laboratory photograph. No claim is made about how the manufacturer produced its catalog images.
 
-## Generated workplace illustrations
+## Retired generated workplace illustrations
 
-`hematology-scientist.webp` and `chemistry-scientist.webp` were created using the built-in image-generation tool for this page. They depict fictional adults and are visibly captioned as AI-generated. They are not photographs of actual staff, patient data, microscopy reference images, or instructions for operating an analyzer. The chemistry scene uses generic equipment, not an exact Atellica model. Proportions are preserved in WebP assets.
+`hematology-scientist.webp` and `chemistry-scientist.webp` were created using the built-in image-generation tool for this page. They depict fictional adults. Both workplace scenes and their captions were removed from the tour on 2026-10-19; the files and generation prompts are retained here as historical records. They are not photographs of actual staff, patient data, microscopy reference images, or instructions for operating an analyzer. The chemistry scene uses generic equipment, not an exact Atellica model. Proportions are preserved in WebP assets.
 
 ### Hematology prompt
 
@@ -47,7 +47,7 @@ The existing `hero-0.webp` through `hero-8.webp` character assets are reused wit
 
 ## Revision — 2026-10-07
 
-`hematology-scientist-v2.webp` is the active microscope scene. Built-in image generation edited the earlier fictional scene; the original is preserved. Prompt: "Edit this AI-generated fictional workplace illustration. Change only the adult woman’s face and hair styling to make her look like a beautiful young adult medical laboratory scientist aged about 25–28: youthful facial contours, naturally attractive balanced features, fresh natural skin texture, subtly polished professional appearance, dark brown hair neatly tied back. Keep her clearly adult. Preserve the microscope, correct eye position at the eyepieces, focused expression, pose, hands, gloves, buttoned white coat and teal scrubs, all equipment and background, composition, lighting and image proportions. Keep realistic editorial photography, not glamour or beauty-filter plastic skin. No added text, no branding or watermark."
+`hematology-scientist-v2.webp` replaced the original microscope scene in this revision, before the workplace scenes were removed on 2026-10-19. Built-in image generation edited the earlier fictional scene; the original is preserved. Prompt: "Edit this AI-generated fictional workplace illustration. Change only the adult woman’s face and hair styling to make her look like a beautiful young adult medical laboratory scientist aged about 25–28: youthful facial contours, naturally attractive balanced features, fresh natural skin texture, subtly polished professional appearance, dark brown hair neatly tied back. Keep her clearly adult. Preserve the microscope, correct eye position at the eyepieces, focused expression, pose, hands, gloves, buttoned white coat and teal scrubs, all equipment and background, composition, lighting and image proportions. Keep realistic editorial photography, not glamour or beauty-filter plastic skin. No added text, no branding or watermark."
 
 The blood bank page uses original HTML/CSS/SVG diagrams, not photographs or real product labels. ABO/RhD reaction examples are fictional and assume valid controls; they omit complex variants and discrepancies. The compatibility explorer models ABO only for red-cell components and plasma, not platelets or whole blood, and is not a clinical selection tool.
 
