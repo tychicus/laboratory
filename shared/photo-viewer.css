@@ -1,0 +1,37 @@
+/* Shared viewer: stable controls, maximum image space, original proportions. */
+img[data-photo-ready]{cursor:zoom-in}
+img[data-photo-ready]:focus-visible{outline:3px solid #ffe38a;outline-offset:5px}
+.photo-hint{display:block!important;margin:6px 0 8px;font:600 12px/1.4 system-ui,sans-serif!important;color:#a9eee9!important;letter-spacing:0!important;text-transform:none!important}
+.photo-card-preview{position:relative;min-width:0;display:grid}
+.photo-card-enlarge{position:absolute;z-index:2;right:8px;top:8px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #84e5e499;border-radius:7px;background:#071923ed;color:#e8f5f6;font:28px/1 system-ui,sans-serif;cursor:zoom-in;box-shadow:0 2px 12px #0007}
+.photo-card-enlarge:hover{background:#24505c}
+.photo-card-enlarge:focus-visible{outline:3px solid #ffe38a;outline-offset:3px}
+dialog.photo-viewer{box-sizing:border-box;width:min(96vw,1800px);max-width:96vw;height:94dvh;max-height:94dvh;margin:auto;padding:16px;border:1px solid #8af5ef88;border-radius:12px;background:#081923;color:#e8f5f6;box-shadow:0 20px 90px #000b;overflow:hidden;font:16px/1.5 system-ui,sans-serif;letter-spacing:normal;text-transform:none;text-shadow:none}
+dialog.photo-viewer[open]{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;gap:12px}
+.photo-viewer::backdrop{background:#02090eea}
+.photo-viewer-header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.photo-viewer-header h2{font:600 19px/1.3 system-ui,sans-serif;letter-spacing:normal;text-transform:none;color:#e8f5f6;margin:0}
+.photo-viewer button{min-height:44px;box-sizing:border-box;padding:8px 13px;border:1px solid #8af5ef77;border-radius:6px;background:#153b46;color:#e8f5f6;font:600 14px/1.4 system-ui,sans-serif;letter-spacing:normal;text-transform:none;text-shadow:none;cursor:pointer;white-space:nowrap}
+.photo-viewer button:hover:not(:disabled){background:#245361}
+.photo-viewer button:disabled{opacity:.4;cursor:default}
+.photo-viewer button:focus-visible,.photo-viewer a:focus-visible,.photo-viewer-stage:focus-visible{outline:3px solid #ffe38a;outline-offset:2px}
+.photo-viewer [data-photo-close]{background:#e4f9f5;color:#08202b;border-color:#e4f9f5;min-width:100px}
+.photo-viewer [data-photo-close]:hover{background:#b6eee7!important}
+.photo-viewer-tools,.photo-viewer-sequence,.photo-viewer-zoom{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.photo-viewer-tools{justify-content:space-between}
+.photo-viewer-zoom{margin-left:auto}
+.photo-viewer-sequence[hidden]{display:none}
+.photo-viewer [data-photo-count]{min-width:44px;text-align:center;font-size:13px;color:#c6dce4}
+.photo-viewer-stage{overflow:auto;overscroll-behavior:contain;min-width:0;min-height:0;background:#020a10;border-radius:4px;touch-action:pan-x pan-y pinch-zoom;scrollbar-gutter:stable}
+.photo-viewer-canvas{display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:100%;min-height:100%;width:max-content;padding:12px}
+.photo-viewer-stage img{display:block;flex:none;max-width:none!important;max-height:none!important;min-width:0;height:auto!important;margin:0!important;object-fit:contain;border:0!important;border-radius:0!important;mix-blend-mode:normal!important;filter:none!important;transform:none!important;animation:none!important;opacity:1!important}
+.photo-viewer-stage img[hidden]{display:none}
+.photo-viewer-notes{max-height:17dvh;overflow:auto;min-height:0}
+.photo-viewer-caption{font:14px/1.5 system-ui,sans-serif;color:#dcebed}
+.photo-viewer-caption *{font:inherit;letter-spacing:normal;text-transform:none;text-shadow:none}
+.photo-viewer-caption h2,.photo-viewer-caption h3,.photo-viewer-caption p,.photo-viewer-caption blockquote{margin:3px 0}
+.photo-viewer-caption>strong,.photo-viewer-caption>span,.photo-viewer-caption>small{display:block}
+.photo-viewer-caption a{color:#a2eee8;text-decoration:underline;text-underline-offset:2px}
+.photo-viewer-status{font:12px/1.4 system-ui,sans-serif;color:#b6ccd4;margin:5px 0 0}
+@media(max-width:600px){dialog.photo-viewer{padding:10px;gap:8px}.photo-viewer-header h2{font-size:16px}.photo-viewer button{font-size:12px;padding:8px 10px}.photo-viewer [data-photo-close]{min-width:88px}.photo-viewer-tools{gap:6px}.photo-viewer-zoom{margin-left:0}.photo-viewer-caption{font-size:12px}.photo-viewer-status{font-size:11px}.photo-viewer-notes{max-height:15dvh}}
+@media print{.photo-hint,.photo-card-enlarge,.photo-viewer{display:none!important}}

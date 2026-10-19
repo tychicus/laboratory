@@ -3,3 +3,25 @@
 /* Independent, slightly broader specimen drift; existing pause behavior retained. */
 .specimen.rbc{--float-x:11px;--float-y:-10px;animation-duration:24s}.specimen.sickle{--float-x:-13px;--float-y:10px;animation-duration:29s}.specimen.wbc{--float-x:-10px;--float-y:13px;animation-duration:27s}.specimen.blast{--float-x:13px;--float-y:-9px;animation-duration:31s}.specimen.bacteria{--float-x:-10px;--float-y:14px;animation-duration:23s}.specimen.ascaris{--float-x:-13px;--float-y:-9px;animation-duration:33s}.specimen.virus{--float-x:10px;--float-y:-12px;animation-duration:26s}.specimen.ascaris img{filter:drop-shadow(1px 2px 2px #31475277)}.specimen:active{animation-play-state:paused!important}.instrument-rail .tube-window{border:0}.scale-note{font-size:13px;color:#b0c8d2;line-height:1.5}.scale-note a{text-decoration:underline}.microscope-footer{align-items:center}.lens-surface .particle:nth-child(3n){animation-duration:21s;animation-direction:reverse}.lens-surface .particle:nth-child(3n + 1){animation-duration:27s}.lens-surface .particle:nth-child(3n + 2){animation-duration:33s;animation-direction:alternate-reverse}
 @media(max-width:620px){.instrument-rail{justify-content:center}.instrument-rail .tube-window{flex-direction:row;width:auto;gap:10px;padding:0}.instrument-rail .tube-window>img{width:80px;height:85px}.microscope-footer{flex-wrap:wrap;gap:8px}.microscope-footer span{max-width:100%}.specimen.virus .specimen-label small,.specimen.ascaris .specimen-label small{display:block;font-size:8px}.ambient-cell{--mobile-drift:.7}}
+
+/* A quiet science-display grid, shared by every laboratory page. */
+:root{
+  --lab-grid-size:40px;
+  --lab-grid-x:linear-gradient(#8af5ef0d 1px,transparent 1px);
+  --lab-grid-y:linear-gradient(90deg,#8af5ef0d 1px,transparent 1px);
+}
+body,.microscope-home{
+  background-image:var(--lab-grid-x),var(--lab-grid-y),var(--lab-backdrop,radial-gradient(ellipse at 70% 35%,#143541 0%,#071924 45%,#030b13 90%));
+  background-size:var(--lab-grid-size) var(--lab-grid-size),var(--lab-grid-size) var(--lab-grid-size),auto;
+  background-repeat:repeat,repeat,no-repeat;
+}
+.microscope-home{--lab-backdrop:radial-gradient(ellipse at 46% 46%,#101d24,#02060a 69%)}
+.welcome-layer{
+  background-image:var(--lab-grid-x),var(--lab-grid-y),radial-gradient(ellipse,#02080cf5 4%,#02080cca 42%,#02080c45 83%);
+  background-size:var(--lab-grid-size) var(--lab-grid-size),var(--lab-grid-size) var(--lab-grid-size),auto;
+  background-repeat:repeat,repeat,no-repeat;
+}
+@media(max-width:600px){:root{--lab-grid-size:32px}}
+@media print{
+  body,.microscope-home,.welcome-layer{background-image:none}
+}

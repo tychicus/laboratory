@@ -1,36 +1,41 @@
-/* Progressive enhancement: without JavaScript, every section remains readable. */
+/* Without JavaScript, every section remains readable. */
 (() => {
   const story = document.querySelector('.sickle-story');
   if (!story) return;
-  const slides = [...story.querySelectorAll('.sc-slide')];
-  const controls = story.querySelector('.sc-controls');
-  const prev = controls.querySelector('[data-prev]');
-  const next = controls.querySelector('[data-next]');
-  const overview = controls.querySelector('[data-overview]');
-  let current = 0, showAll = false;
-  function render(focus = false) {
-    slides.forEach((slide, i) => { slide.hidden = !showAll && i !== current; });
-    prev.disabled = showAll || current === 0;
-    next.disabled = showAll || current === slides.length - 1;
-    controls.querySelector('.sc-progress').textContent = showAll ? 'All sections' : `${current + 1} / ${slides.length}`;
-    overview.textContent = showAll ? 'Present' : 'Show all';
-    overview.setAttribute('aria-pressed', String(showAll));
-    if (focus) {
-      slides[current].querySelector('h1, h2').focus({preventScroll: true});
-      controls.scrollIntoView({block:'start', behavior:'instant'});
-    }
+  const sections = [...story.querySelectorAll('.sc-slide')];
+  const tabs = story.querySelector('.sc-tabs');
+  const buttons = [...tabs.querySelectorAll('[data-section]')];
+
+  function select(index, scroll = false) {
+    sections.forEach((section, i) => { section.hidden = i !== index; });
+    buttons.forEach((button, i) => {
+      button.setAttribute('aria-selected', String(i === index));
+      button.tabIndex = i === index ? 0 : -1;
+    });
+    if (scroll) tabs.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
-  function advance(delta) {
-    const target = Math.max(0, Math.min(slides.length - 1, current + delta));
-    if (target === current || showAll) return;
-    current = target; render(true);
-  }
-  prev.addEventListener('click', () => advance(-1));
-  next.addEventListener('click', () => advance(1));
-  overview.addEventListener('click', () => { showAll = !showAll; render(true); });
-  document.addEventListener('keydown', e => {
-    if (showAll || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey || e.target.closest('a,button,summary,input,textarea,select,[contenteditable]')) return;
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); advance(e.key === 'ArrowRight' ? 1 : -1); }
+
+  tabs.setAttribute('role', 'tablist');
+  buttons.forEach((button, index) => {
+    button.setAttribute('role', 'tab');
+    button.setAttribute('aria-controls', sections[index].id);
+    sections[index].setAttribute('role', 'tabpanel');
+    sections[index].setAttribute('aria-labelledby', button.id);
+    sections[index].tabIndex = 0;
+    button.addEventListener('click', () => select(index, true));
+    button.addEventListener('keydown', event => {
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      let target;
+      if (event.key === 'ArrowRight') target = (index + 1) % buttons.length;
+      else if (event.key === 'ArrowLeft') target = (index - 1 + buttons.length) % buttons.length;
+      else if (event.key === 'Home') target = 0;
+      else if (event.key === 'End') target = buttons.length - 1;
+      else return;
+      event.preventDefault();
+      select(target, true);
+      buttons[target].focus({ preventScroll: true });
+    });
   });
-  controls.hidden = false; render();
+  select(0);
+  tabs.hidden = false;
 })();

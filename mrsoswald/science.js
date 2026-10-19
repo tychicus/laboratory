@@ -9,6 +9,7 @@
   let current = null;
   let frameId = 0;
   let lastTime = null;
+  let viewingPhoto = false;
   const quotePositions = new Map();
 
   function shuffled(values) {
@@ -67,7 +68,7 @@
     current.element.style.opacity = String(opacity);
     current.element.setAttribute('aria-hidden', String(opacity < 0.1));
   }
-  function isRunning() { return !document.hidden; }
+  function isRunning() { return !document.hidden && !viewingPhoto; }
   function frame(time) {
     frameId = 0;
     if (!isRunning()) { lastTime = null; return; }
@@ -86,6 +87,11 @@
   }
   document.getElementById('shuffle').addEventListener('click', () => { showNext(); syncMotion(); });
   document.addEventListener('visibilitychange', syncMotion);
+  document.addEventListener('photo-viewer:change', event => {
+    viewingPhoto = event.detail.open;
+    if (viewingPhoto && current) { current.age = FADE_MS; paint(); }
+    syncMotion();
+  });
   document.getElementById('sources').addEventListener('click', () => { credits.showModal(); });
   document.getElementById('close-credits').addEventListener('click', () => credits.close());
   credits.addEventListener('click', event => {

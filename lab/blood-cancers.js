@@ -50,22 +50,4 @@
     count.querySelector('[data-count-buttons]').hidden = false;
     select(7000, false);
   }
-  const dialog = document.querySelector('.bc-lightbox');
-  if (dialog) {
-    let opener;
-    document.querySelectorAll('[data-open-slide]').forEach(button => {
-      button.hidden = false;
-      button.addEventListener('click', () => {
-        opener=button;
-        dialog.querySelector('img').src = button.dataset.openSlide;
-        dialog.querySelector('img').alt = button.dataset.slideAlt;
-        dialog.querySelector('h2').textContent = button.dataset.slideTitle;
-        dialog.querySelector('a').href = button.dataset.openSlide;
-        dialog.showModal();
-      });
-    });
-    dialog.querySelector('[data-close-slide]').addEventListener('click', () => dialog.close());
-    dialog.addEventListener('click', event => { if (event.target === dialog) { const r=dialog.getBoundingClientRect(); if (event.clientX<r.left || event.clientX>r.right || event.clientY<r.top || event.clientY>r.bottom) dialog.close(); } });
-    dialog.addEventListener('close', () => opener?.focus());
-  }
 })();
