@@ -10,7 +10,8 @@
   --lab-grid-x:linear-gradient(#8af5ef0d 1px,transparent 1px);
   --lab-grid-y:linear-gradient(90deg,#8af5ef0d 1px,transparent 1px);
 }
-body,.microscope-home{
+/* Include topic classes so their later background shorthands cannot erase the grid. */
+body,body[class]{
   background-image:var(--lab-grid-x),var(--lab-grid-y),var(--lab-backdrop,radial-gradient(ellipse at 70% 35%,#143541 0%,#071924 45%,#030b13 90%));
   background-size:var(--lab-grid-size) var(--lab-grid-size),var(--lab-grid-size) var(--lab-grid-size),auto;
   background-repeat:repeat,repeat,no-repeat;
@@ -23,5 +24,5 @@ body,.microscope-home{
 }
 @media(max-width:600px){:root{--lab-grid-size:32px}}
 @media print{
-  body,.microscope-home,.welcome-layer{background-image:none}
+  body,body[class],.welcome-layer{background-image:none}
 }
