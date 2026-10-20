@@ -59,11 +59,11 @@ function drawPlot(plot,index){
   else {ctx.fillText('CD19− / CD10+',px(.21),y+19);ctx.fillText('CD19+ / CD10+',px(.73),y+19);ctx.fillText('CD19− / CD10−',px(.21),y+h-10);ctx.fillText('CD19+ / CD10−',px(.73),y+h-10);}
  }
  // Paint highlighted events last so background events cannot obscure them.
- for(const selectedPass of highlighted?[false,true]:[false]){
+ for(const selectedPass of [false,true]){
   for(let i=0;i<count;i++){
-   const p=points[i];if(highlighted&&p.selected!==selectedPass)continue;
-   ctx.globalAlpha=highlighted?(p.selected?.85:.28):.55;
-   ctx.fillStyle=highlighted&&p.selected?'#f0a1d0':'#9ab7c3';
+   const p=points[i];if(p.selected!==selectedPass)continue;
+   ctx.globalAlpha=p.selected?.85:(highlighted?.28:.55);
+   ctx.fillStyle=p.selected?'#f0a1d0':'#9ab7c3';
    ctx.fillRect(px(p[plot.x]),py(p[plot.y]),2,2);
   }
  }
@@ -88,8 +88,8 @@ function render(){
  document.querySelectorAll('.steps li').forEach((li,i)=>{li.className=i===step?'active':i<step?'done':'';if(i===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
  document.body.classList.toggle('flow-mode',step>=2&&step<=4);
  document.querySelectorAll('.linked-result').forEach(el=>el.hidden=step<3);
- $('linked-key').textContent=step>=3?'Pink = the same selected cells in every plot. Gray = the remaining cells.':'Select the unusual population to follow the same cells across their marker measurements.';
- plots.forEach((p,i)=>p.canvas.setAttribute('aria-label','Simulated '+p.name+' plot. '+(step>=3?['The low-CD45, low-side-scatter population is selected and colored pink.','The same selected pink cells are CD34 positive.','The same selected pink cells coexpress CD19 and CD10 in the upper-right region.'][i]:'Cell events accumulate; all cells are gray until a population is selected.')));
+ $('linked-key').textContent='Pink = the same abnormal cells in every plot. Gray = the remaining cells.';
+ plots.forEach((p,i)=>p.canvas.setAttribute('aria-label','Simulated '+p.name+' plot. '+(step>=3?['The low-CD45, low-side-scatter population is selected and colored pink.','The same selected pink cells are CD34 positive.','The same selected pink cells coexpress CD19 and CD10 in the upper-right region.'][i]:'Cell events accumulate; the same abnormal cells are pink in all three plots, while the remaining cells are gray.')));
  if(step===2)start();else if(step===3||step===4){count=total;draw();}
 }
 function syncMotion(){document.body.classList.toggle('paused',paused);$('motion').setAttribute('aria-pressed',String(paused));$('motion').textContent=paused?'Resume animation':'Pause animation';$('flow').classList.toggle('running',acquiring&&!paused);if(acquiring)$('visual-state').textContent=paused?'ACQUISITION PAUSED':'ACQUIRING CELLS';}
