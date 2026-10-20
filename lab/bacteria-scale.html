@@ -197,11 +197,7 @@ async function flip(showBack){
 }
 document.getElementById('reveal-challenge').addEventListener('click',()=>flip(true));
 document.getElementById('hide-challenge').addEventListener('click',()=>flip(false));
-const fmt=n=>'
-})();
-</script>
-</body>
-</html>+Math.round(n).toLocaleString('en-US');
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
 const values=Array.from({length:21},(_,i)=>2**i);
 const svgNS='http://www.w3.org/2000/svg';
 const grid=document.getElementById('chart-grid');
@@ -211,7 +207,7 @@ const el=(tag,attrs,txt)=>{const e=document.createElementNS(svgNS,tag);for(const
 for(const amount of [0,262144,524288,786432,1048576]){
  const y=Y(amount);
  grid.appendChild(el('line',{class:'grid-line',x1:left,y1:y,x2:left+width,y2:y}));
- grid.appendChild(el('text',{class:'axis-label',x:left-12,y:y+5,'text-anchor':'end'},amount===0?'$0':amount===1048576?'$1.05M':`${Math.round(amount/1000)}k`));
+ grid.appendChild(el('text',{class:'axis-label',x:left-12,y:y+5,'text-anchor':'end'},amount===0?'$0':amount===1048576?'$1.05M':`$${Math.round(amount/1000)}k`));
 }
 for(const day of [0,5,10,15,20])grid.appendChild(el('text',{class:'axis-label',x:X(day),y:355,'text-anchor':'middle'},day===0?'Start':`Day ${day}`));
 
