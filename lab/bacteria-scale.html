@@ -56,9 +56,25 @@ a{color:var(--mint)}
 .growth-chart-panel svg{width:100%;height:auto;display:block}
 .growth-chart-panel svg .grid-line{stroke:#41616a;stroke-width:1;stroke-dasharray:3 6}
 .growth-chart-panel svg .axis-label{fill:#bad4da;font:13px system-ui,sans-serif}
-.growth-chart-panel svg .curve{stroke:#91efdc;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.growth-chart-panel svg .highlight-point{fill:var(--gold);stroke:#071d28;stroke-width:3}
-.growth-chart-panel svg .chart-area{fill:#75e6d130}
+.growth-chart-panel svg .curve{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.growth-chart-panel svg .curve.exponential{stroke:#91efdc}
+.growth-chart-panel svg .curve.constant{stroke:#ffd28a}
+.growth-chart-panel svg .race-dot{stroke:#071d28;stroke-width:3}
+.growth-chart-panel svg .race-dot.exponential{fill:#91efdc}
+.growth-chart-panel svg .race-dot.constant{fill:#ffd28a}
+.chart-legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:16px 0 8px;color:#c6dce0;font-size:14px}
+.chart-legend span{display:inline-flex;align-items:center;gap:8px}
+.chart-legend i{width:14px;height:5px;border-radius:6px;display:inline-block;background:var(--mint)}
+.chart-legend .constant i{background:var(--gold)}
+.race-status{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:13px 0 12px}
+.race-status>div{min-width:0;padding:13px;background:#12313b;border:1px solid #2f5360;border-radius:10px}
+.race-status small{display:block;color:#b3ced3;font-size:11px;line-height:1.3;margin-bottom:6px}
+.race-status strong{display:block;overflow-wrap:anywhere;font-size:clamp(15px,2vw,19px);font-variant-numeric:tabular-nums}
+.race-status .constant-total{color:var(--gold)}
+.race-status .exponential-total{color:var(--mint)}
+.race-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px}
+.race-actions button{padding:12px 18px;background:var(--mint);color:#06232b;border:1px solid var(--mint);border-radius:10px;font-weight:800}
+.race-actions p{margin:0;color:var(--soft);font-size:13px;line-height:1.4}
 .chart-caption{margin:12px 0 0;color:var(--soft);font-size:13px;line-height:1.55}
 .growth-table-panel .table-scroll{max-height:355px;overflow:auto;border-radius:8px}
 .growth-table-panel table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14px}
@@ -120,13 +136,24 @@ a{color:var(--mint)}
 </div>
 <p class="reveal-verdict">The doubling dollar wins by $1,028,576—more than 52 times as much!</p>
 <div class="growth-layout">
-<div class="growth-chart-panel"><h3>Watch the curve take off</h3>
+<div class="growth-chart-panel"><h3>Watch the two deals race</h3>
+<div class="chart-legend" aria-label="Graph legend"><span class="constant"><i aria-hidden="true"></i>$1,000 each day</span><span class="exponential"><i aria-hidden="true"></i>$1 doubled each day</span></div>
 <svg id="doubling-chart" viewBox="0 0 660 380" role="img" aria-labelledby="chart-title chart-description">
-<title id="chart-title">Dollar amount after each day of doubling</title>
-<desc id="chart-description">$1 at day zero, $1,024 at day 10, $32,768 at day 15, $524,288 at day 19, and $1,048,576 at day 20. Growth accelerates sharply in the final days.</desc>
-<g id="chart-grid"></g><path class="chart-area" id="chart-area"></path><path class="curve" id="chart-curve"></path><g id="chart-markers"></g>
+<title id="chart-title">Animated race: daily payment versus a doubling dollar</title>
+<desc id="chart-description">Press Start animation to draw both series from Day 0 to Day 20. The straight line increases by one thousand dollars per day to twenty thousand dollars. The doubling curve rises from one dollar to over a million, overtaking the straight line between Days 13 and 14.</desc>
+<g id="chart-grid"></g>
+<path class="curve constant" id="chart-constant"></path>
+<path class="curve exponential" id="chart-curve"></path>
+<circle class="race-dot constant" id="constant-dot" r="6" cx="75" cy="320"></circle>
+<circle class="race-dot exponential" id="exponential-dot" r="6" cx="75" cy="320"></circle>
 </svg>
-<p class="chart-caption">One dollar, doubled once at the end of each day. The beginning looks almost flat because the last few days dominate the scale.</p>
+<div class="race-status" aria-label="Current values in the graph">
+<div><small>ELAPSED TIME</small><strong id="race-day">Day 0 of 20</strong></div>
+<div><small>$1,000 PER DAY</small><strong class="constant-total" id="race-constant">$0</strong></div>
+<div><small>DOUBLING DOLLAR</small><strong class="exponential-total" id="race-exponential">$1</strong></div>
+</div>
+<div class="race-actions"><button type="button" id="start-race" aria-controls="doubling-chart">▶ Start animation</button><p id="race-announcement" aria-live="polite" role="status">The chart is ready. Click Start animation when the class is ready.</p></div>
+<p class="chart-caption">Both lines share the same dollar scale and advance through the same 20 days. At first the straight line leads; then doubling takes off.</p>
 </div>
 <div class="growth-table-panel"><h3>Every day, step by step</h3>
 <div class="table-scroll" tabindex="0" aria-label="Scrollable table listing the amount after each day"><table><thead><tr><th>Day</th><th>Amount</th></tr></thead><tbody id="doubling-rows">
@@ -158,6 +185,7 @@ async function flip(showBack){
  flipping=true;
  const animate=!reduce.matches && !document.body.classList.contains('paused');
  if(animate)await card.animate([{transform:'rotateY(0deg)'},{transform:'rotateY(90deg)'}],{duration:210,easing:'ease-in',fill:'forwards'}).finished;
+ if(!showBack)resetRace();
  front.hidden=showBack;back.hidden=!showBack;
  if(animate)await card.animate([{transform:'rotateY(-90deg)'},{transform:'rotateY(0deg)'}],{duration:260,easing:'ease-out',fill:'forwards'}).finished;
  // Web Animations fill is temporary; remove completed effects so no old transforms linger.
@@ -169,28 +197,111 @@ async function flip(showBack){
 }
 document.getElementById('reveal-challenge').addEventListener('click',()=>flip(true));
 document.getElementById('hide-challenge').addEventListener('click',()=>flip(false));
-const fmt=n=>'$'+n.toLocaleString('en-US');
+const fmt=n=>'
+})();
+</script>
+</body>
+</html>+Math.round(n).toLocaleString('en-US');
 const values=Array.from({length:21},(_,i)=>2**i);
 const svgNS='http://www.w3.org/2000/svg';
 const grid=document.getElementById('chart-grid');
-const marks=document.getElementById('chart-markers');
 const left=75,top=22,width=554,height=298,max=2**20;
 const X=i=>left+i/20*width,Y=n=>top+height-n/max*height;
 const el=(tag,attrs,txt)=>{const e=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(txt!==undefined)e.textContent=txt;return e};
 for(const amount of [0,262144,524288,786432,1048576]){
- let y=Y(amount);
+ const y=Y(amount);
  grid.appendChild(el('line',{class:'grid-line',x1:left,y1:y,x2:left+width,y2:y}));
- grid.appendChild(el('text',{class:'axis-label',x:left-12,y:y+5,'text-anchor':'end'},amount===0?'$0':amount===1048576?'$1.05M':`$${Math.round(amount/1000)}k`));
+ grid.appendChild(el('text',{class:'axis-label',x:left-12,y:y+5,'text-anchor':'end'},amount===0?'$0':amount===1048576?'$1.05M':`${Math.round(amount/1000)}k`));
 }
 for(const day of [0,5,10,15,20])grid.appendChild(el('text',{class:'axis-label',x:X(day),y:355,'text-anchor':'middle'},day===0?'Start':`Day ${day}`));
-const path=values.map((v,i)=>(i?'L':'M')+X(i).toFixed(2)+' '+Y(v).toFixed(2)).join(' ');
-document.getElementById('chart-curve').setAttribute('d',path);
-document.getElementById('chart-area').setAttribute('d',path+` L${X(20)} ${Y(0)} L${X(0)} ${Y(0)} Z`);
-for(const day of [10,15,18,19,20]){
- const circle=el('circle',{class:'highlight-point',cx:X(day),cy:Y(values[day]),r:day===20?7:5});
- circle.appendChild(el('title',{},`Day ${day}: ${fmt(values[day])}`));
- marks.appendChild(circle);
+
+const constantPath=document.getElementById('chart-constant');
+const exponentialPath=document.getElementById('chart-curve');
+const constantDot=document.getElementById('constant-dot');
+const exponentialDot=document.getElementById('exponential-dot');
+const playButton=document.getElementById('start-race');
+const announcement=document.getElementById('race-announcement');
+const raceDay=document.getElementById('race-day');
+const constantTotal=document.getElementById('race-constant');
+const exponentialTotal=document.getElementById('race-exponential');
+let frameId=null;
+const RACE_DURATION=7700;
+const xy=(i,amount)=>`${X(i).toFixed(2)} ${Y(amount).toFixed(2)}`;
+
+function drawRace(day){
+ const d=Math.min(20,Math.max(0,day));
+ const full=Math.floor(d);
+ const fraction=d-full;
+ const doubled=full===20?values[20]:values[full]*(1+fraction);
+ const constant=d*1000;
+ const curve=values.slice(0,full+1).map((value,i)=>(i===0?'M':'L')+xy(i,value));
+ if(full<20&&fraction>0)curve.push('L'+xy(d,doubled));
+ exponentialPath.setAttribute('d',curve.join(' '));
+ constantPath.setAttribute('d',`M${xy(0,0)} L${xy(d,constant)}`);
+ constantDot.setAttribute('cx',X(d));constantDot.setAttribute('cy',Y(constant));
+ exponentialDot.setAttribute('cx',X(d));exponentialDot.setAttribute('cy',Y(doubled));
+ raceDay.textContent=`Day ${Math.min(20,Math.floor(d))} of 20`;
+ constantTotal.textContent=fmt(constant);
+ exponentialTotal.textContent=fmt(doubled);
 }
+
+function resetRace(){
+ if(frameId!==null)cancelAnimationFrame(frameId);
+ frameId=null;
+ drawRace(0);
+ playButton.textContent='▶ Start animation';
+ announcement.textContent='The chart is ready. Click Start animation when the class is ready.';
+}
+function finishRace(){
+ frameId=null;
+ drawRace(20);
+ playButton.textContent='↻ Replay animation';
+ announcement.textContent='Day 20: the doubling dollar finishes at $1,048,576 versus $20,000 for the daily payment.';
+}
+function startRace(){
+ if(frameId!==null)cancelAnimationFrame(frameId);
+ frameId=null;
+ drawRace(0);
+ if(reduce.matches || document.body.classList.contains('paused')){
+  finishRace();
+  announcement.textContent='Full results shown without motion because animations are paused.';
+  return;
+ }
+ playButton.textContent='↻ Restart animation';
+ announcement.textContent='Both lines are racing from Day 0 to Day 20.';
+ let begin=null;
+ let announcedCrossing=false;
+ const step=timestamp=>{
+  if(!begin)begin=timestamp;
+  const progress=Math.min(1,(timestamp-begin)/RACE_DURATION);
+  const day=progress*20;
+  drawRace(day);
+  if(day>=14 && !announcedCrossing){
+   announcedCrossing=true;
+   announcement.textContent='Day 14: the doubling dollar has overtaken the $1,000-per-day deal!';
+  }
+  if(progress<1){frameId=requestAnimationFrame(step);}
+  else finishRace();
+ };
+ frameId=requestAnimationFrame(step);
+}
+playButton.addEventListener('click',startRace);
+new MutationObserver(()=>{
+ if(document.body.classList.contains('paused') && frameId!==null){
+  cancelAnimationFrame(frameId);finishRace();
+  announcement.textContent='Animation stopped because motion was paused. Full results shown.';
+ }
+}).observe(document.body,{attributes:true,attributeFilter:['class']});
+document.addEventListener('visibilitychange',()=>{
+ if(document.hidden&&frameId!==null){
+  cancelAnimationFrame(frameId);
+  frameId=null;
+  playButton.textContent='▶ Start animation';
+  announcement.textContent='Animation stopped when the page was hidden. Press Start to restart.';
+  drawRace(0);
+ }
+});
+resetRace();
 })();
 </script>
 </body>
