@@ -10,7 +10,7 @@ files too. The user's current instructions take precedence.
   infrastructure folders are not projects.
 - Use short, descriptive, lowercase folder names, with hyphens if needed.
   Folder names become public website subpaths, so avoid spaces and long names.
-- Current projects: `lab/` (laboratory science) and `signal/` (The Signal Archive).
+- Current projects: `lab/` (laboratory science), `mrsoswald/` (Dana's classroom), and `signal/` (The Signal Archive).
 - The repository-root `index.html` is the shared landing page linking projects.
 - Keep project-specific pages, assets, styles, and scripts inside that project's
   folder. Change shared root files only when the task requires it.
@@ -75,4 +75,44 @@ files too. The user's current instructions take precedence.
   Check browser layout when available; disclose any testing limitations instead
   of claiming a visual check that was not performed.
 - Keep credentials, temporary files, and local testing artifacts out of commits.
+
+## File organization, size budgets, and AI-friendly maintenance
+
+These rules apply to **every** site in this repository, including the Lab,
+Dana's classroom (`mrsoswald/`), The Signal Archive, the root landing page,
+and any future sites.
+
+- Keep HTML, CSS, JavaScript, data, and media logically separated. Prefer
+  modular, descriptively named files over monolithic inline HTML pages.
+- Target less than **200 KB** for hand-maintained HTML, CSS, and JS files.
+  At **250 KB**, review and split by responsibility where practical; above
+  **500 KB**, do not add more functionality to that file without a documented
+  reason and a plan to modularize it. These are maintainability thresholds,
+  not arbitrary runtime restrictions or limits for generated/vendor files.
+- Keep major features in their own modules and place reusable styles or
+  utilities in appropriately scoped shared files. Avoid needless fragmentation
+  into tiny files; group tightly related functionality.
+- Use external JS and CSS where feasible. Preserve execution order, relative
+  URLs, event behavior, and compatibility with GitHub Pages subpaths.
+- Keep large images, fonts, audio, and video as separate assets, optimize
+  them for delivery, and avoid embedding them as giant base64 strings in
+  source files. Do not split binary files as if they were code.
+- When adding a feature, check whether existing files are approaching size
+  thresholds. Refactor the relevant area before making an oversized file
+  substantially larger. Do not silently rewrite unrelated functionality.
+- For existing oversized files (notably `signal/index.html`), plan a
+  careful, incremental extraction. Keep the original or a recoverable
+  Git revision, verify the refactor locally, and only publish with the
+  user's approval under the preview-before-commit rule.
+- During AI-assisted edits, retrieve repository structure, file metadata,
+  targeted line ranges, or small excerpts first. Never dump multi-megabyte
+  files, full encoded assets, or huge tool responses into chat merely to
+  inspect them. If a source file exceeds safe tool limits, use local
+  scripts, streaming/range reads, or selective extraction instead.
+- Before committing, inspect touched source-file sizes and report any
+  newly introduced size-budget exceptions with a reason. Avoid making an
+  oversized file larger without explicitly flagging it.
+- Do not make disruptive refactors simply to meet a number. Functional
+  parity, accessible behavior, working links, and preservation of user
+  changes take priority over any particular file-size target.
 
