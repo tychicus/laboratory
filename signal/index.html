@@ -18,14 +18,19 @@
 </main>
 <div class="tape" aria-hidden="true"><span class="small">◆ &nbsp; DO NOT ADJUST YOUR REALITY</span><strong>LOST FREQUENCIES. STRANGE DISCOVERIES.</strong><span class="frequency">VOL. 01 / 1983–2026</span></div>
 <section class="status" aria-label="Transmission details"><div class="data">SIGNAL INTEGRITY<b>98.7% / STABLE</b></div><div class="data">SOURCE<b>UNKNOWN</b></div><div class="data">YOUR CLEARANCE<b>CIVILIAN</b></div><div class="data">INCIDENT STATUS<b>UNRESOLVED</b></div></section>
-<footer class="foot"><p>A privately maintained collection of public curiosities.</p><button id="effects" class="effects" aria-pressed="true">CRT effects: on</button><p>NO. 001 &nbsp; / &nbsp; TRUST YOUR CURIOSITY.</p></footer>
+<footer class="foot"><p>A privately maintained collection of public curiosities.</p><button type="button" class="effects" data-terminal hidden aria-haspopup="dialog">Terminal</button><button id="effects" class="effects" aria-pressed="true">CRT effects: on</button><p>NO. 001 &nbsp; / &nbsp; TRUST YOUR CURIOSITY.</p></footer>
 </div>
-<dialog id="transmission" aria-labelledby="transmission-title"><div class="tag">CHANNEL OPEN // TRANSMISSION 001</div><h2 id="transmission-title">You’re receiving us.</h2><p>In 1983, someone heard something they couldn’t explain.</p><p>They kept a record.<br>Then the record went missing.</p><p>43 years later, the frequency is active again.</p><p class="quiet">END OF RECOVERED TRANSMISSION</p><div class="transmission-actions"><button id="truth-door" class="truth-door" type="button" aria-label="Enter Archive">Enter Archive</button><button data-close class="return-receiver">RETURN TO RECEIVER</button></div><p id="next-channel-status" class="next-channel-status" role="status" hidden></p></dialog>
-<dialog id="fragment" class="dos-dialog" aria-label="Recovered floppy disk terminal"><button class="dos-close" data-close aria-label="Close terminal">×</button><div class="dos-screen" id="dos-screen"><div id="dos-output" class="dos-output" role="log" aria-label="Terminal output" aria-live="polite" aria-relevant="additions"></div><form id="dos-form" class="dos-prompt" autocomplete="off"><label id="dos-prompt-label" for="dos-input">A:\&gt;</label><span class="dos-entry"><input id="dos-input" aria-label="DOS command" type="text" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go" maxlength="120" placeholder=" " autofocus><span class="dos-cursor" aria-hidden="true">_</span></span></form></div></dialog>
+<dialog id="transmission" aria-labelledby="transmission-title"><div class="tag">CHANNEL OPEN // TRANSMISSION 001</div><h2 id="transmission-title">You’re receiving us.</h2><p>In 1983, someone heard something they couldn’t explain.</p><p>They kept a record.<br>Then the record went missing.</p><p>43 years later, the frequency is active again.</p><p class="quiet">END OF RECOVERED TRANSMISSION</p><div class="transmission-actions"><button type="button" class="effects" data-terminal hidden aria-haspopup="dialog">Terminal</button><button id="truth-door" class="truth-door" type="button" aria-label="Enter Archive">Enter Archive</button><button data-close class="return-receiver">RETURN TO RECEIVER</button></div><p id="next-channel-status" class="next-channel-status" role="status" hidden></p></dialog>
+<dialog id="fragment" class="dos-dialog" aria-label="Recovered floppy disk terminal"><button class="dos-close" data-close aria-label="Close terminal">×</button><div class="dos-screen" id="dos-screen"><div id="dos-output" class="dos-output" role="log" aria-label="Terminal output" aria-live="polite" aria-relevant="additions"></div><section id="notes-editor" hidden>
+<label for="notes-text">EDIT NOTES.TXT</label>
+<textarea id="notes-text" rows="7" spellcheck="true"></textarea>
+<small id="notes-status" role="status"></small>
+<button type="button" id="notes-done">Return to prompt</button>
+</section><form id="dos-form" class="dos-prompt" autocomplete="off"><label id="dos-prompt-label" for="dos-input">A:\&gt;</label><span class="dos-entry"><input id="dos-input" aria-label="DOS command" type="text" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go" maxlength="120" placeholder=" " autofocus><span class="dos-cursor" aria-hidden="true">_</span></span></form></div></dialog>
 
 <main id="network" class="network" hidden aria-labelledby="node-title">
 <div class="network-inner">
-<div class="node-top"><span>NIN / REMOTE ACCESS SERVICE</span><button id="node-effects" type="button" aria-pressed="true">CRT effects: on</button></div>
+<div class="node-top"><span>NIN / REMOTE ACCESS SERVICE</span><button type="button" class="effects" data-terminal hidden aria-haspopup="dialog">Terminal</button><button id="node-effects" type="button" aria-pressed="true">CRT effects: on</button></div>
 <header class="node-banner"><h2 id="node-title" tabindex="-1">NORTHRIDGE INFORMATION NETWORK</h2><p>NODE 04 // 1983</p></header>
 <div id="node-directory">
 <div class="node-line boot-line">CONNECTION ESTABLISHED</div><div class="node-line boot-line">REMOTE USER: UNIDENTIFIED</div>
@@ -51,5 +56,9 @@
 
 <noscript><p style="padding:20px">JavaScript is off. The receiver is visible, but ENTER and the hidden signal require JavaScript.</p></noscript>
 <script src="archive.js"></script>
+<svg aria-hidden="true" width="0" height="0" style="position:absolute;pointer-events:none"><defs>
+<filter id="tracking-tear" x="-8%" width="116%"><feTurbulence type="fractalNoise" baseFrequency="0 .026" numOctaves="1" seed="13" result="bands"/><feDisplacementMap in="SourceGraphic" in2="bands" scale="65" xChannelSelector="R" yChannelSelector="A"/></filter>
+</defs></svg>
+<script src="interference.js"></script>
 </body>
 </html>

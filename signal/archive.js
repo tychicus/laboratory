@@ -1,5 +1,25 @@
 
 // Fictional disk and custom recovery program; no access to the visitor's filesystem.
+function createArchiveRecords(storage) {
+  const prefix = 'signal-archive.floppy-1983.';
+  const memory = new Map();
+  function read(key) {
+    try { return memory.get(key) ?? storage().getItem(prefix + key) ?? ''; }
+    catch { return memory.get(key) ?? ''; }
+  }
+  function write(key, value) {
+    memory.set(key, value);
+    try { storage().setItem(prefix + key, value); return true; }
+    catch { return false; }
+  }
+  function discover(entry) {
+    const entries = read('journal').split('\n').filter(Boolean);
+    if (!entries.includes(entry)) write('journal', [...entries, entry].join('\n'));
+  }
+  return {read, write, discover};
+}
+const archiveRecords = createArchiveRecords(() => window.localStorage);
+
 function createFloppy(restoredInitially=false){
   let restored=restoredInitially, awaiting=false;
   const files={
@@ -10,6 +30,13 @@ function createFloppy(restoredInitially=false){
     'RECOVER.EXE':{size:8192,date:'06-15-83',text:'This program cannot be displayed as text.'},
     'INCIDENT.TXT':{size:1536,date:'06-15-83',text:'INCIDENT 001 / 15 JUN 1983\nSTATION 04 - RESTRICTED\n\nThe signal did not originate above the facility.\nIt originated inside a sealed evidence locker.\n\nContents: one comic book, issue 37.\nPublisher records show that issue was never printed.\nIts cover depicts this room. The clock reads 10:13.\nThere are three people in the picture.\nOnly two of us were here.\n\nThe third figure is standing behind me.\n\nI separated the cover from this report and hid it\namong the ordinary collection. Find the missing\nissue. Look where the price should be.\nThe same crooked mark is there.\n\nDo not trust the date on the cover.\n\nM. VALE\n\nDELETION AUTHORIZED BY: [REDACTED]'}
   };
+  for (const [name, key] of [['JOURNAL.TXT', 'journal'], ['NOTES.TXT', 'notes']]) {
+    files[name] = {
+      date: '06-15-83',
+      get text() { return archiveRecords.read(key); },
+      get size() { return new TextEncoder().encode(this.text).length; }
+    };
+  }
   const names=()=>Object.keys(files).filter(n=>restored||n!=='INCIDENT.TXT');
   function path(s){return s.replace(/^A:\\?/i,'').replace(/^\\/,'').toUpperCase();}
   function execute(raw){
@@ -26,7 +53,7 @@ function createFloppy(restoredInitially=false){
     if(rawCmd.toUpperCase()==='A:')return {};
     if(/^[B-Z]:$/i.test(rawCmd))return {text:'Invalid drive specification'};
     if(cmd==='CD'||cmd==='CHDIR')return {text:!arg?'A:\\':/^(\\|\.\.?|A:\\)$/i.test(arg)?'':'Invalid directory'};
-    if(cmd==='HELP'||cmd==='?')return {text:'DIR             Display disk directory\nTYPE filename   Display a text file\nCLS             Clear screen\nCD              Display current directory\nEXIT            Leave terminal\n\nEnter a program name to execute it.'};
+    if(cmd==='HELP'||cmd==='?')return {text:'DIR             Display disk directory\nTYPE filename   Display a text file\nTYPE JOURNAL.TXT  Read your discovery log\nEDIT NOTES.TXT    Write personal notes\nCLS             Clear screen\nCD              Display current directory\nEXIT            Leave terminal\n\nEnter a program name to execute it.'};
     if(cmd==='DIR'){
       let pattern=path(arg||'*.*');
       if(pattern==='')pattern='*.*';
@@ -36,10 +63,13 @@ function createFloppy(restoredInitially=false){
       const rows=list.map(n=>{const [base,ext]=n.split('.');return base.padEnd(8)+' '+ext.padEnd(3)+' '+String(files[n].size).padStart(6)+' '+files[n].date;});
       return {text:' Volume in drive A has no label\n Directory of A:\\\n\n'+rows.join('\n')+'\n'+String(list.length).padStart(9)+' File(s)\n   '+(327680-names().reduce((sum,n)=>sum+files[n].size,0))+' bytes free'};
     }
+    if(cmd==='EDIT')return path(arg)==='NOTES.TXT'?{action:'edit'}:{text:'Usage: EDIT NOTES.TXT'};
     if(cmd==='TYPE'){
       if(!arg)return {text:'Required parameter missing'};
       const n=path(arg);
-      return {text:names().includes(n)?files[n].text:'File not found'};
+      if (!names().includes(n)) return {text:'File not found'};
+      if (!['RECOVER.EXE','NOTES.TXT','JOURNAL.TXT'].includes(n)) archiveRecords.discover('Examined ' + n);
+      return {text:files[n].text || '(empty file)'};
     }
     if(cmd==='RECOVER'||cmd==='RECOVER.EXE'){
       if(arg)return {text:'Invalid parameter'};
@@ -95,7 +125,29 @@ function createFloppy(restoredInitially=false){
   enter.addEventListener('click',()=>{
     document.getElementById('transmission').showModal();
   });
-  document.getElementById('anomaly').addEventListener('click',()=>{document.getElementById('fragment').showModal();document.getElementById('dos-input').focus();});
+  let terminalOpener;
+  const shortcuts = document.querySelectorAll('[data-terminal]');
+  const clue = document.getElementById('anomaly');
+  const discovery = 'Accessed the recovered floppy terminal.';
+  let unlocked = archiveRecords.read('journal').split('\n').includes(discovery)
+    || archiveRecords.read('restored.v1') === 'yes';
+  function openTerminal(button) {
+    terminalOpener = button;
+    dosDialog.showModal();
+    dosInput.focus();
+  }
+  for (const button of shortcuts) {
+    button.hidden = !unlocked;
+    button.addEventListener('click', () => {
+      if (unlocked) openTerminal(button);
+    });
+  }
+  clue.addEventListener('click', () => {
+    archiveRecords.discover(discovery);
+    unlocked = true;
+    for (const button of shortcuts) button.hidden = false;
+    openTerminal(clue);
+  });
   document.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click',()=>button.closest('dialog').close()));
 
   const dosDialog=document.getElementById('fragment'),dosInput=document.getElementById('dos-input'),dosForm=document.getElementById('dos-form'),dosOutput=document.getElementById('dos-output'),dosScreen=document.getElementById('dos-screen'),dosLabel=document.getElementById('dos-prompt-label');
@@ -103,17 +155,35 @@ function createFloppy(restoredInitially=false){
   let savedRestore=false;
   try{savedRestore=localStorage.getItem(diskSaveKey)==='yes';}catch{}
   const disk=createFloppy(savedRestore);
+  if(savedRestore) archiveRecords.discover('Restored INCIDENT.TXT.');
   let busy=false,sequence=0;
   const commandHistory=[];let historyIndex=0;
   const scrollTerminal=()=>{dosScreen.scrollTop=dosScreen.scrollHeight;};
   function printDOS(text){if(!text)return;const line=document.createElement('div');line.textContent=text;dosOutput.appendChild(line);while(dosOutput.children.length>180)dosOutput.firstChild.remove();scrollTerminal();}
   function promptDOS(){busy=false;dosForm.hidden=false;dosLabel.textContent=disk.awaiting?'? ':'A:\\>';dosInput.value='';if(dosDialog.open)dosInput.focus();scrollTerminal();}
+  const editor = document.getElementById('notes-editor');
+  const notes = document.getElementById('notes-text');
+  const status = document.getElementById('notes-status');
+  notes.addEventListener('input', () => {
+    status.textContent = archiveRecords.write('notes', notes.value)
+      ? 'Saved in this browser.' : 'Browser storage unavailable. Notes last for this visit.';
+  });
+  document.getElementById('notes-done').addEventListener('click', () => {
+    editor.hidden = true;
+    promptDOS();
+  });
+  printDOS('Station 04 / Type HELP for commands.');
   const pauseDOS=ms=>new Promise(resolve=>window.setTimeout(resolve,effectsOn&&!reduced.matches?ms:0));
   async function runDOS(raw){
     if(busy)return;
     printDOS((disk.awaiting?'? ':'A:\\>')+raw);
     if(raw.trim()){commandHistory.push(raw);if(commandHistory.length>80)commandHistory.shift();historyIndex=commandHistory.length;}
     dosInput.value='';const result=disk.execute(raw);
+    if(result.action==='edit'){
+      notes.value=archiveRecords.read('notes');
+      status.textContent='Notes save as you type in this browser.';
+      dosForm.hidden=true;editor.hidden=false;notes.focus();return;
+    }
     if(result.action==='clear'){dosOutput.replaceChildren();promptDOS();return;}
     if(result.action==='exit'){dosDialog.close();return;}
     if(result.text)printDOS(result.text);
@@ -127,6 +197,7 @@ function createFloppy(restoredInitially=false){
         printDOS('RESTORING...');
         await pauseDOS(650);if(ticket!==sequence)return;
         disk.completeRestore();
+        archiveRecords.discover('Restored INCIDENT.TXT.');
         try{localStorage.setItem(diskSaveKey,'yes');}catch{}
         printDOS('████████████████████ 100%\nFILE RESTORED:\nINCIDENT.TXT\n\nWARNING:\nTHIS FILE WAS DELETED\nBY ORDER OF [REDACTED]');
       }
@@ -140,8 +211,8 @@ function createFloppy(restoredInitially=false){
     if(event.key==='ArrowUp'){event.preventDefault();historyIndex=Math.max(0,historyIndex-1);dosInput.value=commandHistory[historyIndex]||'';}
     if(event.key==='ArrowDown'){event.preventDefault();historyIndex=Math.min(commandHistory.length,historyIndex+1);dosInput.value=commandHistory[historyIndex]||'';}
   });
-  dosDialog.addEventListener('keydown',event=>{if(event.ctrlKey&&event.key.toLowerCase()==='c'){event.preventDefault();sequence++;disk.cancel();printDOS('^C');promptDOS();}});
-  dosDialog.addEventListener('close',()=>{sequence++;disk.cancel();promptDOS();document.getElementById('anomaly').focus();});
+  dosDialog.addEventListener('keydown',event=>{if(editor.hidden&&event.ctrlKey&&event.key.toLowerCase()==='c'){event.preventDefault();sequence++;disk.cancel();printDOS('^C');promptDOS();}});
+  dosDialog.addEventListener('close',()=>{sequence++;disk.cancel();editor.hidden=true;promptDOS();terminalOpener?.focus();});
 
   // A recovered margin note: "10:13 wasn't the beginning. It was when we noticed."
 })();
@@ -171,6 +242,7 @@ function createFloppy(restoredInitially=false){
    row.inert=false;return t===ticket;
  }
  async function showDirectory(){
+   archiveRecords.discover('Connected to the remote archive directory.');
    const t=++ticket;restorePrintedText();mode='preboot';resetAnomaly();syncEffects();mode='boot';
    const rows=[node.querySelector('.node-top'),$('node-title'),node.querySelector('.node-banner p'),...directory.querySelectorAll('.node-line'),...directory.querySelectorAll('.node-meta>div'),...directory.querySelectorAll('.node-menu button'),$('node-form'),node.querySelector('.node-foot')];
    // Keep the DOM's reading order: connection, user, metadata, then selection.
@@ -178,10 +250,10 @@ function createFloppy(restoredInitially=false){
    const animate=motion();if(animate){node.classList.add('node-printing');rows.forEach(row=>{row.classList.add('node-print-row');row.inert=true;});}
    node.hidden=false;frame.hidden=true;directory.hidden=false;response.hidden=true;archive.hidden=true;$('node-error').textContent='';$('node-input').value='';window.scrollTo(0,0);
    if(animate){await wait(100);for(const row of rows){if(t!==ticket)return;if(!await typeRow(row,t))return;await wait(35);}}
-   if(t!==ticket)return;restorePrintedText();visited=true;mode='directory';resetAnomaly();focusHeading('node-title');
+   if(t!==ticket)return;restorePrintedText();visited=true;mode='directory';resetAnomaly();if(!document.querySelector('dialog[open]'))focusHeading('node-title');
  }
 
- function showArchive(){++ticket;restorePrintedText();mode='archive';node.hidden=false;frame.hidden=true;directory.hidden=true;response.hidden=true;archive.hidden=false;resetAnomaly();window.scrollTo(0,0);focusHeading('print-title');}
+ function showArchive(){archiveRecords.discover('Opened the print archive.');++ticket;restorePrintedText();mode='archive';node.hidden=false;frame.hidden=true;directory.hidden=true;response.hidden=true;archive.hidden=false;resetAnomaly();window.scrollTo(0,0);focusHeading('print-title');}
  function route(){if(location.hash==='#network')showDirectory();else if(location.hash==='#print-archive')showArchive();else {++ticket;restorePrintedText();mode='off';node.hidden=true;frame.hidden=false;resetAnomaly();if(visited)$('enter').focus({preventScroll:true});}}
  function goDirectory(){if(location.hash==='#network')showDirectory();else location.hash='network';}
  window.addEventListener('hashchange',route);
@@ -200,7 +272,7 @@ function createFloppy(restoredInitially=false){
  }
  node.querySelectorAll('[data-selection]').forEach(b=>b.onclick=()=>select(b.dataset.selection));node.querySelectorAll('[data-directory]').forEach(b=>b.onclick=goDirectory);
  $('node-form').onsubmit=e=>{e.preventDefault();select($('node-input').value);};
- document.addEventListener('keydown',e=>{if(node.hidden||e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.isComposing)return;const editing=/INPUT|TEXTAREA|SELECT/.test(e.target.tagName);if(editing)return;if(mode==='directory'&&/^[0-8]$/.test(e.key)){e.preventDefault();select(e.key);}else if(mode==='confirm'&&/^[yn]$/i.test(e.key)){e.preventDefault();confirmArchive(e.key.toLowerCase()==='y');}else if((e.key==='0'||e.key==='Escape')&&mode!=='off'){e.preventDefault();goDirectory();}});
+ document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]')||node.hidden||e.repeat||e.ctrlKey||e.metaKey||e.altKey||e.isComposing)return;const editing=/INPUT|TEXTAREA|SELECT/.test(e.target.tagName);if(editing)return;if(mode==='directory'&&/^[0-8]$/.test(e.key)){e.preventDefault();select(e.key);}else if(mode==='confirm'&&/^[yn]$/i.test(e.key)){e.preventDefault();confirmArchive(e.key.toLowerCase()==='y');}else if((e.key==='0'||e.key==='Escape')&&mode!=='off'){e.preventDefault();goDirectory();}});
  route();
 })();
 
