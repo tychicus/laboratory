@@ -111,3 +111,11 @@ dialog{color:var(--paper);background:var(--ink);border:1px solid var(--green);ma
 .tracking-static { position: fixed; inset: 0; z-index: 2147483647; pointer-events: none; overflow: hidden; }
 .tracking-static canvas { width: 100%; height: 100%; image-rendering: pixelated; opacity: .37; }
 .tracking-static img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; mix-blend-mode: screen; }
+
+.issue-cover { position: relative; margin: 12px 0 16px; }
+.issue-cover img { margin: 0; }
+.issue-number { position: absolute; left: 10.6%; top: 11.6%; width: 5.8%; height: 4.4%; }
+.issue-number:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+#station-dialog { width:min(960px,calc(100% - 24px)); max-width:960px; height:min(740px,90dvh); overflow:hidden; }
+#station-dialog iframe { display:block; width:100%; height:100%; border:0; }

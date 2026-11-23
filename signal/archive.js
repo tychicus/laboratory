@@ -276,3 +276,19 @@ function createFloppy(restoredInitially=false){
  route();
 })();
 
+
+(() => {
+  const link = document.querySelector('.issue-number');
+  const dialog = document.getElementById('station-dialog');
+  const frame = dialog.querySelector('iframe');
+  link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (!frame.hasAttribute('src')) frame.src = link.href;
+    dialog.showModal();
+  });
+  dialog.addEventListener('close', () => link.focus({preventScroll:true}));
+  window.addEventListener('message', event => {
+    if (event.source === frame.contentWindow && event.data === 'station04-close' && dialog.open) dialog.close();
+  });
+})();
