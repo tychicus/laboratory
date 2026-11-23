@@ -9,9 +9,9 @@
   const ctx = noise.getContext('2d');
   if (!ctx) return;
   const pixels = ctx.createImageData(noise.width, noise.height);
-  const portrait = new Image();
-  portrait.src = 'assets/interference.jpg';
-  layer.append(noise, portrait);
+  const trackingField = new Image();
+  trackingField.src = 'assets/tracking-field.jpg';
+  layer.append(noise, trackingField);
   let timer, frame, target;
   const enabled = () => !document.hidden && !reduced.matches && !document.body.classList.contains('no-effects');
   function schedule() {
@@ -32,7 +32,7 @@
     const start = performance.now();
     function draw(now) {
       const elapsed = now - start;
-      if (elapsed >= 420 || !enabled()) return schedule();
+      if (elapsed >= 1250 || !enabled()) return schedule();
       for (let i = 0; i < pixels.data.length; i += 4) {
         const v = Math.random() * 175;
         pixels.data[i] = v;
@@ -41,7 +41,7 @@
         pixels.data[i + 3] = 255;
       }
       ctx.putImageData(pixels, 0, 0);
-      portrait.style.opacity = elapsed >= 155 && elapsed < 230 ? '.21' : '0';
+      trackingField.style.opacity = elapsed >= 580 && elapsed < 670 ? '.21' : '0';
       frame = requestAnimationFrame(draw);
     }
     draw(start);
